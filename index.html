@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shubham Suvarna — Product Manager</title>
+<meta name="description" content="Shubham Suvarna — 0→1 Product Manager across AI, platform & consumer products. Builder of Attribyte.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:#070707;
+  --bg-2:#0d0d0d;
+  --bg-3:#111110;
+  --ink:#f4f4f0;          /* 17.6:1 on --bg  (AAA) */
+  --muted:#b3b3ad;        /* 8.9:1 on --bg   (AAA) */
+  --accent:#c8ff2e;       /* 16.2:1 on --bg  (AAA) */
+  --line:rgba(244,244,240,.16);
+  --t-fast:150ms ease-out;
+  --t-base:300ms ease-out;
+  --t-slow:600ms cubic-bezier(.22,1,.36,1);
+  --font-display:'Archivo Black',Impact,sans-serif;
+  --font-body:'Space Grotesk',Helvetica,Arial,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --pad:clamp(1.25rem,4vw,4rem);
+}
+/* ============ RESET / BASE ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html.reduced{scroll-behavior:auto}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:var(--font-body);font-size:1.0625rem;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+::selection{background:var(--accent);color:#070707}
+img{max-width:100%}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:4px}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
+  outline:2px solid var(--accent);outline-offset:4px;border-radius:2px;
+}
+@media (pointer:fine){
+  html.cursor-on, html.cursor-on a, html.cursor-on button{cursor:none}
+}
+/* scrollbar */
+::-webkit-scrollbar{width:10px;background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#2a2a28;border:2px solid var(--bg)}
+::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+
+.mono{font-family:var(--font-mono);font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase}
+.sec{padding:clamp(6rem,12vh,10rem) var(--pad)}
+.sec-head{display:flex;align-items:baseline;gap:1.25rem;border-bottom:1px solid var(--line);padding-bottom:1.25rem;margin-bottom:3.5rem}
+.sec-num{font-family:var(--font-mono);color:var(--accent);font-size:.875rem;letter-spacing:.12em}
+h2{font-family:var(--font-display);font-size:clamp(2.4rem,6.5vw,5rem);line-height:.95;letter-spacing:-.01em;text-transform:uppercase}
+.sec-note{margin-left:auto;color:var(--muted)}
+
+/* ============ SKIP LINK ============ */
+.skip{position:fixed;top:-100%;left:1rem;z-index:300;background:var(--accent);color:#070707;
+  padding:.75rem 1.25rem;font-family:var(--font-mono);font-size:.8125rem;text-transform:uppercase;
+  letter-spacing:.1em;text-decoration:none;transition:top var(--t-base)}
+.skip:focus{top:1rem}
+
+/* ============ CURSOR ============ */
+.cur-dot,.cur-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:250;
+  transform:translate(-100px,-100px);will-change:transform}
+.cur-dot{width:6px;height:6px;background:var(--accent);border-radius:50%}
+.cur-ring{width:38px;height:38px;margin:-16px 0 0 -16px;border:1px solid var(--accent);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:width var(--t-base),height var(--t-base),margin var(--t-base),background-color var(--t-base),border-color var(--t-base)}
+.cur-ring .cur-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.12em;color:#070707;
+  opacity:0;transition:opacity var(--t-fast);text-transform:uppercase;font-weight:700}
+.cur-ring.is-hover{width:74px;height:74px;margin:-34px 0 0 -34px;background:var(--accent);border-color:var(--accent)}
+.cur-ring.is-hover .cur-label{opacity:1}
+.cur-ring.is-down{width:26px;height:26px;margin:-10px 0 0 -10px}
+@media (pointer:coarse){.cur-dot,.cur-ring{display:none}}
+
+/* ============ HEADER ============ */
+.site-head{position:fixed;inset:0 0 auto 0;z-index:200;display:flex;align-items:center;gap:2rem;
+  padding:1.1rem var(--pad);mix-blend-mode:difference}
+.brand{font-family:var(--font-display);font-size:1rem;letter-spacing:.05em;text-decoration:none}
+.brand span{color:var(--accent)}
+.site-nav{margin-left:auto;display:flex;gap:1.75rem;overflow-x:auto;max-width:70vw}
+.site-nav a{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;color:var(--ink);position:relative;white-space:nowrap;padding:.25rem 0;
+  transition:color var(--t-base)}
+.site-nav a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--accent);
+  transform:scaleX(0);transform-origin:left;transition:transform var(--t-base)}
+.site-nav a:hover{color:var(--accent)}
+.site-nav a:hover::after{transform:scaleX(1)}
+.field-btn{background:none;border:1px solid var(--ink);color:var(--ink);
+  font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.45rem .8rem;transition:background-color var(--t-base),color var(--t-base),border-color var(--t-base),transform 120ms ease-out}
+.field-btn:hover{background:var(--ink);color:#070707}
+.field-btn:active{transform:scale(.96)}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding:7rem var(--pad) 4.5rem;overflow:hidden}
+#mesh{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,.8fr);
+  gap:clamp(2rem,6vw,6rem);align-items:end}
+.kicker{display:flex;align-items:center;gap:.75rem;color:var(--accent);margin-bottom:2rem}
+.kicker::before{content:"";width:2.5rem;height:1px;background:var(--accent)}
+.hero h1{font-family:var(--font-display);text-transform:uppercase;
+  font-size:clamp(3rem,8.2vw,9.5rem);line-height:.88;letter-spacing:-.015em}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
+.hero h1 .ln-in{display:block;will-change:transform;white-space:nowrap}
+.hero h1 .ln-sm{font-size:.62em;line-height:1.05}
+.hero h1 .hollow{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.lede{max-width:34rem;margin-top:2.25rem;font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--ink)}
+.lede strong{color:var(--accent);font-weight:600}
+.cta-row{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.5rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-mono);font-size:.8125rem;
+  letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:1rem 1.5rem;border:1px solid var(--ink);
+  color:var(--ink);background:transparent;
+  transition:background-color var(--t-base),color var(--t-base),border-color var(--t-base),transform 120ms ease-out}
+.btn:hover{background:var(--ink);color:#070707}
+.btn:active{transform:scale(.97)}
+.btn-solid{background:var(--accent);border-color:var(--accent);color:#070707;font-weight:700}
+.btn-solid:hover{background:var(--ink);border-color:var(--ink)}
+.btn .ar{transition:transform var(--t-base)}
+.btn:hover .ar{transform:translateX(4px)}
+/* dossier */
+.dossier{border:1px solid var(--line);background:rgba(13,13,13,.78);backdrop-filter:blur(8px);padding:1.75rem}
+.dossier-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);
+  padding-bottom:1rem;margin-bottom:.5rem;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.drow{display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line)}
+.drow:last-child{border-bottom:none}
+.drow dt{color:var(--muted)}
+.drow dd{text-align:right;color:var(--ink)}
+.drow dd a{color:var(--accent);text-decoration:none}
+.drow dd a:hover{text-decoration:underline}
+.scroll-cue{position:absolute;bottom:1.5rem;left:var(--pad);z-index:2;color:var(--muted);
+  display:flex;align-items:center;gap:.6rem}
+.scroll-cue .bar{width:1px;height:2.4rem;background:var(--muted);overflow:hidden;position:relative}
+.scroll-cue .bar::after{content:"";position:absolute;inset:0;background:var(--accent);
+  animation:drip 1.8s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes drip{0%{transform:translateY(-100%)}55%{transform:translateY(0)}100%{transform:translateY(100%)}}
+
+/* ============ ABOUT (split) ============ */
+.split{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(2.5rem,6vw,6rem)}
+.split-left .inner{position:sticky;top:7rem}
+.statement{margin-top:2rem;font-size:clamp(1.15rem,1.9vw,1.5rem);line-height:1.5;max-width:26rem}
+.statement em{font-style:normal;color:var(--accent)}
+.about-list{list-style:none;counter-reset:ab}
+.about-list li{counter-increment:ab;display:grid;grid-template-columns:3.5rem 1fr;gap:1rem;
+  padding:1.4rem 0;border-bottom:1px solid var(--line);align-items:start}
+.about-list li::before{content:counter(ab,decimal-leading-zero);font-family:var(--font-mono);
+  font-size:.8125rem;color:var(--accent);padding-top:.3rem}
+.method{margin-top:4.5rem}
+.method h3,.skills h3{font-family:var(--font-mono);font-size:.8125rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem}
+.method-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.mstep{background:var(--bg);padding:1.5rem;transition:background-color var(--t-base)}
+.mstep:hover{background:var(--bg-3)}
+.mstep .ms-num{font-family:var(--font-mono);color:var(--accent);font-size:.8125rem}
+.mstep h4{font-family:var(--font-display);text-transform:uppercase;font-size:1.05rem;margin:.6rem 0 .5rem}
+.mstep p{color:var(--muted);font-size:.95rem;line-height:1.55}
+.skills{margin-top:4.5rem}
+.skill-group{margin-bottom:2rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none}
+.chips li{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.06em;border:1px solid var(--line);
+  padding:.45rem .7rem;color:var(--ink);transition:border-color var(--t-base),color var(--t-base),background-color var(--t-base)}
+.chips li:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ============ JOURNEY ============ */
+#journey{background:var(--bg-2)}
+.xp-card{border:1px solid var(--line);background:var(--bg);margin-bottom:1.25rem;
+  will-change:clip-path,transform;transition:border-color var(--t-base)}
+.xp-card:hover{border-color:rgba(200,255,46,.55)}
+.xp-top{display:grid;grid-template-columns:4rem 1fr auto;gap:1.25rem;align-items:baseline;
+  padding:1.6rem 1.75rem 0}
+.xp-idx{font-family:var(--font-mono);color:var(--accent);font-size:.875rem}
+.xp-org{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(1.5rem,3.2vw,2.4rem);line-height:1}
+.xp-role{display:block;font-family:var(--font-body);font-size:1rem;font-weight:500;color:var(--muted);
+  text-transform:none;letter-spacing:0;margin-top:.5rem}
+.xp-tag{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:#070707;background:var(--accent);padding:.35rem .6rem;white-space:nowrap}
+.xp-body{padding:1.25rem 1.75rem 1.6rem;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(180px,.6fr);
+  gap:2rem;align-items:end}
+.xp-body p{color:var(--ink);max-width:56ch}
+.xp-metric{text-align:right;border-left:1px solid var(--line);padding-left:1.5rem}
+.xp-metric .num{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.4rem);color:var(--accent);
+  display:block;line-height:1}
+.xp-metric .lbl{color:var(--muted);font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;
+  text-transform:uppercase;display:block;margin-top:.5rem}
+
+/* ============ MARQUEE ============ */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;
+  padding:1.1rem 0;background:var(--bg)}
+.mq-in{display:inline-block;white-space:nowrap;animation:mq 26s linear infinite;will-change:transform}
+.mq-in span{font-family:var(--font-display);text-transform:uppercase;font-size:1.05rem;letter-spacing:.06em;
+  margin-right:3rem}
+.mq-in .acc{color:var(--accent)}
+@keyframes mq{to{transform:translateX(-50%)}}
+html.reduced .mq-in{animation:none}
+
+/* ============ ATTRIBYTE — HORIZONTAL ============ */
+#attribyte{position:relative;background:var(--bg)}
+.hwrap{overflow:hidden}
+.htrack{display:flex;will-change:transform}
+.panel{flex:0 0 100vw;min-height:100svh;max-height:100svh;overflow:hidden;
+  padding:clamp(5rem,9vh,7.5rem) var(--pad) clamp(3.5rem,7vh,5.5rem);position:relative;
+  display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--line)}
+html.reduced .panel{max-height:none;overflow:visible}
+.panel .bg-num{position:absolute;right:2rem;bottom:0;font-family:var(--font-display);
+  font-size:clamp(8rem,28vw,24rem);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(244,244,240,.10);
+  pointer-events:none;user-select:none}
+.p-kicker{color:var(--accent);margin-bottom:clamp(.9rem,2vh,1.5rem);display:flex;align-items:center;gap:.75rem}
+.p-kicker::before{content:"";width:2rem;height:1px;background:var(--accent)}
+.panel h3{font-family:var(--font-display);text-transform:uppercase;
+  font-size:clamp(2rem,min(7vw,11.5vh),6.5rem);line-height:.92;letter-spacing:-.01em;max-width:14ch}
+.panel h3 .acc{color:var(--accent)}
+.panel .p-body{margin-top:clamp(1.1rem,2.6vh,2rem);max-width:38rem;
+  font-size:clamp(.95rem,min(1.5vw,2.4vh),1.2rem);color:var(--ink)}
+.panel .p-body strong{color:var(--accent);font-weight:600}
+.p-stats{display:flex;gap:clamp(1.5rem,4vw,3rem);margin-top:clamp(1.4rem,3.6vh,3rem);flex-wrap:wrap}
+.p-stat .num{font-family:var(--font-display);font-size:clamp(1.9rem,min(5vw,6.5vh),4rem);color:var(--accent);line-height:1}
+.p-stat .lbl{color:var(--muted);font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;display:block;margin-top:.6rem;max-width:14rem}
+.layers{margin-top:clamp(1.4rem,3vh,2.5rem);border-top:1px solid var(--line);max-width:46rem;width:100%;list-style:none}
+.layers li{display:grid;grid-template-columns:3.2rem minmax(8rem,14rem) 1fr;gap:1.25rem;
+  padding:clamp(.8rem,2vh,1.3rem) 0;border-bottom:1px solid var(--line);align-items:baseline}
+.layers .l-num{font-family:var(--font-mono);color:var(--accent);font-size:.8125rem}
+.layers .l-name{font-family:var(--font-display);text-transform:uppercase;font-size:1.1rem}
+.layers .l-desc{color:var(--muted);font-size:.95rem}
+.p-foot{margin-top:clamp(1.4rem,3vh,2.5rem);color:var(--muted)}
+.panel-title .live-pill{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--accent);
+  color:var(--accent);font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;
+  padding:.45rem .8rem;text-transform:uppercase;margin-bottom:clamp(1.2rem,2.6vh,2rem)}
+.hprog{position:absolute;left:var(--pad);right:var(--pad);bottom:2.2rem;z-index:5;display:flex;
+  align-items:center;gap:1.25rem;pointer-events:none}
+.hprog .track{flex:1;height:1px;background:var(--line);position:relative}
+.hprog .fill{position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left}
+.hprog .count{font-family:var(--font-mono);font-size:.75rem;color:var(--muted);letter-spacing:.12em}
+html.reduced .htrack{flex-direction:column}
+html.reduced .panel{flex-basis:auto;border-right:none;border-bottom:1px solid var(--line);min-height:auto;
+  padding-top:5rem;padding-bottom:5rem}
+html.reduced .hprog{display:none}
+
+/* ============ RECOGNITION ============ */
+#recognition{background:var(--bg-2)}
+.rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.rec-col{background:var(--bg-2);padding:2rem}
+.rec-col h3{font-family:var(--font-mono);font-size:.8125rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.5rem}
+.rec-col ul{list-style:none}
+.rec-col li{padding:.9rem 0;border-bottom:1px solid var(--line);color:var(--ink);font-size:.97rem;line-height:1.5}
+.rec-col li:last-child{border-bottom:none}
+.rec-col li .sub{display:block;color:var(--muted);font-size:.85rem;margin-top:.25rem}
+
+/* ============ CONTACT ============ */
+#contact{min-height:90svh;display:flex;flex-direction:column;justify-content:center}
+.contact-kicker{color:var(--accent);margin-bottom:2rem}
+.contact-h{font-family:var(--font-display);text-transform:uppercase;
+  font-size:clamp(2.2rem,9vw,8rem);line-height:.9;letter-spacing:-.015em}
+.contact-h .ln{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
+.contact-h .ln-in{display:block;white-space:nowrap}
+.contact-h .hollow{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.contact-sub{color:var(--muted);max-width:34rem;margin-top:2rem}
+.contact-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:3rem}
+#copyBtn{min-width:17.5rem;justify-content:center}
+#copyBtn.is-loading{background:var(--bg-3);border-color:var(--line);color:var(--muted)}
+#copyBtn.is-done{background:var(--accent);border-color:var(--accent);color:#070707}
+.contact-links{margin-top:4.5rem;border-top:1px solid var(--line)}
+.cl{display:flex;align-items:center;justify-content:space-between;gap:1rem;text-decoration:none;
+  padding:1.5rem .25rem;border-bottom:1px solid var(--line);
+  transition:padding var(--t-base),background-color var(--t-base)}
+.cl:hover{padding-left:1.25rem;background:var(--bg-3)}
+.cl .cl-name{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(1.3rem,3vw,2rem)}
+.cl .cl-meta{color:var(--muted);font-family:var(--font-mono);font-size:.75rem;letter-spacing:.1em;
+  text-transform:uppercase;margin-left:auto}
+.cl .ar{color:var(--accent);font-size:1.5rem;transition:transform var(--t-base)}
+.cl:hover .ar{transform:translate(6px,-6px)}
+
+/* ============ FOOTER ============ */
+footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
+  padding:2rem var(--pad);border-top:1px solid var(--line);color:var(--muted)}
+
+/* ============ REVEAL DEFAULTS (JS adds motion) ============ */
+[data-reveal]{opacity:1}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr;align-items:start}
+  .hero h1{font-size:clamp(2.8rem,12.5vw,6rem)}
+  .split{grid-template-columns:1fr}
+  .split-left .inner{position:static}
+  .method-grid{grid-template-columns:1fr}
+  .rec-grid{grid-template-columns:1fr}
+  .xp-top{grid-template-columns:2.6rem 1fr;grid-template-rows:auto auto}
+  .xp-tag{grid-column:2;justify-self:start}
+  .xp-body{grid-template-columns:1fr}
+  .xp-metric{text-align:left;border-left:none;padding-left:0;border-top:1px solid var(--line);padding-top:1rem}
+  .site-nav{gap:1.1rem}
+  .site-nav a .nv{display:none}
+}
+@media (max-width:600px){
+  .dossier{display:none}
+  .panel{padding-top:6rem}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="cur-dot" aria-hidden="true"></div>
+<div class="cur-ring" aria-hidden="true"><span class="cur-label"></span></div>
+
+<header class="site-head">
+  <a class="brand" href="#top">SS<span>.</span>26</a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="#about"><span class="nv">01 </span>About</a>
+    <a href="#journey"><span class="nv">02 </span>Journey</a>
+    <a href="#attribyte"><span class="nv">03 </span>Attribyte</a>
+    <a href="#recognition"><span class="nv">04 </span>Recognition</a>
+    <a href="#contact"><span class="nv">05 </span>Contact</a>
+  </nav>
+  <button class="field-btn" id="fieldToggle" aria-pressed="true" aria-label="Toggle particle field animation">Field: On</button>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top" aria-label="Intro">
+    <canvas id="mesh" aria-hidden="true"></canvas>
+    <div class="hero-grid">
+      <div>
+        <p class="kicker mono" data-hero-fade>Product Manager — AI · Platform · Consumer</p>
+        <h1>
+          <span class="ln"><span class="ln-in">Shubham</span></span>
+          <span class="ln"><span class="ln-in hollow">Suvarna</span></span>
+          <span class="ln"><span class="ln-in ln-sm">Builds 0<span style="color:var(--accent)">→</span>1</span></span>
+        </h1>
+        <p class="lede" data-hero-fade>Product builder at the intersection of technology, business, and AI —
+          from rapid MVPs to platforms enabling <strong>$30M/yr</strong> in cost savings.</p>
+        <div class="cta-row" data-hero-fade>
+          <a class="btn btn-solid" href="#attribyte" data-cursor="View">See the flagship <span class="ar">↓</span></a>
+          <a class="btn" href="mailto:shubham9@stanford.edu" data-cursor="Email">Email me <span class="ar">→</span></a>
+        </div>
+      </div>
+      <dl class="dossier" data-hero-card>
+        <div class="dossier-head mono"><span>Dossier / 2026</span><span class="dot"></span></div>
+        <div class="drow mono"><dt>Range</dt><dd>Idea → MVP → Launch → Scale</dd></div>
+        <div class="drow mono"><dt>Domains</dt><dd>Travel · Fintech · Food-tech · eCom</dd></div>
+        <div class="drow mono"><dt>Now</dt><dd><a href="https://attribyte.vercel.app/" target="_blank" rel="noopener" data-cursor="Open">Attribyte — Live ↗</a></dd></div>
+        <div class="drow mono"><dt>School</dt><dd>Stanford MS&amp;E '26–'28</dd></div>
+        <div class="drow mono"><dt>Goal</dt><dd>Global, high-impact products</dd></div>
+      </dl>
+    </div>
+    <div class="scroll-cue mono" aria-hidden="true"><span class="bar"></span>Scroll</div>
+  </section>
+
+  <!-- ================= 01 ABOUT ================= -->
+  <section class="sec split" id="about" aria-labelledby="about-h">
+    <div class="split-left">
+      <div class="inner">
+        <div class="sec-head" style="border-bottom:none;padding-bottom:0;margin-bottom:0">
+          <span class="sec-num">01</span>
+          <h2 id="about-h">About</h2>
+        </div>
+        <p class="statement" data-reveal>I work where <em>technology, business, and AI</em> intersect —
+          turning ambiguity into shipped, scalable systems.</p>
+      </div>
+    </div>
+    <div class="split-right">
+      <ol class="about-list">
+        <li data-reveal>Hands-on ownership across idea → MVP → launch → scale.</li>
+        <li data-reveal>Built multiple products from scratch in travel, fintech, food-tech, and enterprise eCommerce.</li>
+        <li data-reveal>Led AI-powered product initiatives and large-scale internal platforms.</li>
+        <li data-reveal>Strong technical foundation in Computer Engineering, ML, and GenAI.</li>
+        <li data-reveal>Comfortable in high ambiguity, fast execution, and cross-functional leadership.</li>
+        <li data-reveal>Long-term goal: build and scale technology-driven global products.</li>
+      </ol>
+
+      <div class="method" data-reveal>
+        <h3>How I build</h3>
+        <div class="method-grid">
+          <div class="mstep"><span class="ms-num mono">A</span><h4>Frame the system</h4>
+            <p>Who uses it, how data flows, what constrains it. Validate the problem through behavior, step-level data, and competitors.</p></div>
+          <div class="mstep"><span class="ms-num mono">B</span><h4>Scope the MVP</h4>
+            <p>Must do, must not do, tech required. Rank by impact × difficulty — and decide loudly what not to build.</p></div>
+          <div class="mstep"><span class="ms-num mono">C</span><h4>Build with engineers</h4>
+            <p>Sketch data layouts, API constraints, and edge cases early. Translate business needs into buildable plans; document trade-offs.</p></div>
+          <div class="mstep"><span class="ms-num mono">D</span><h4>Ship as experiment</h4>
+            <p>Watch adoption, performance, reliability. Every release is an experiment that feeds the product and its core system.</p></div>
+        </div>
+      </div>
+
+      <div class="skills" data-reveal>
+        <div class="skill-group">
+          <h3>Product</h3>
+          <ul class="chips">
+            <li>Product Strategy</li><li>Discovery & Validation</li><li>PRD / BRD</li><li>Roadmapping</li>
+            <li>A/B Testing</li><li>Product Analytics</li><li>Wireframing & Prototyping</li><li>API Integration</li>
+            <li>Agile / PDLC</li><li>Stakeholder Management</li><li>User Empathy Mapping</li><li>Cross-functional Leadership</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Technical</h3>
+          <ul class="chips">
+            <li>Python</li><li>TensorFlow</li><li>PyTorch</li><li>C++</li><li>OOP</li>
+            <li>GenAI & LLMs</li><li>Machine Learning</li><li>DSA</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Tools</h3>
+          <ul class="chips">
+            <li>JIRA</li><li>Figma</li><li>Postman</li><li>DataDog</li><li>Power BI</li><li>Tableau</li>
+            <li>Google Analytics</li><li>Shopify</li><li>Git</li><li>WebEngage</li><li>MoEngage</li>
+            <li>Metabase</li><li>Meta Business Suite</li><li>Play Console</li><li>Trello</li><li>Miro</li><li>Notion</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 02 JOURNEY ================= -->
+  <section class="sec" id="journey" aria-labelledby="journey-h">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2 id="journey-h">Journey</h2>
+      <span class="sec-note mono">Four zeros → four ones</span>
+    </div>
+
+    <article class="xp-card">
+      <div class="xp-top">
+        <span class="xp-idx">/01</span>
+        <h3 class="xp-org">TravJoy<span class="xp-role">Founding Product Manager · until Jul 2026</span></h3>
+        <span class="xp-tag">Travel</span>
+      </div>
+      <div class="xp-body">
+        <p>Joined at a true zero state — intuition-driven decisions, unstructured execution. Introduced data-backed
+          prioritization from competitor monetization and user-behavior insights, aligned stakeholders on a focused
+          roadmap, and installed standups and tracking. Moved the team from reactive shipping to intentional building.</p>
+        <div class="xp-metric"><span class="num">0→1</span><span class="lbl">Product process, from scratch</span></div>
+      </div>
+    </article>
+
+    <article class="xp-card">
+      <div class="xp-top">
+        <span class="xp-idx">/02</span>
+        <h3 class="xp-org">Fynd<span class="xp-role">Product & Program — Catalogue Cloud</span></h3>
+        <span class="xp-tag">Enterprise</span>
+      </div>
+      <div class="xp-body">
+        <p>Co-led the 0→1 MVP of Catalogue Cloud: one centralized PIM replacing fragmented tools across Reliance
+          brands, hosted on Reliance infra instead of GCP. Owned integrations, attribute logic, hierarchy design, and
+          data modeling; ran large-scale SKU migration, pricing, and inventory coordination across brands.</p>
+        <div class="xp-metric"><span class="num">$<span data-count="30">0</span>M<span style="color:var(--ink)">/yr</span></span><span class="lbl">Projected infra cost savings</span></div>
+      </div>
+    </article>
+
+    <article class="xp-card">
+      <div class="xp-top">
+        <span class="xp-idx">/03</span>
+        <h3 class="xp-org">Liquiloans<span class="xp-role">Product Management Intern</span></h3>
+        <span class="xp-tag">Fintech</span>
+      </div>
+      <div class="xp-body">
+        <p>P2P lending in a regulated environment. Automated monthly and annual investor statements to 50,000+
+          investors, cutting manual ops. Shipped IFA & investor portal improvements off behavior analysis (+20%
+          engagement) and supported RD & SIP launches that lifted revenue ~30%.</p>
+        <div class="xp-metric"><span class="num"><span data-count="50">0</span>K+</span><span class="lbl">Investors reached, automated</span></div>
+      </div>
+    </article>
+
+    <article class="xp-card">
+      <div class="xp-top">
+        <span class="xp-idx">/04</span>
+        <h3 class="xp-org">Roti Gali<span class="xp-role">Founding Team — Product & Technology</span></h3>
+        <span class="xp-tag">Food-tech</span>
+      </div>
+      <div class="xp-body">
+        <p>Where the journey began: fair income for underpaid women home chefs, real food for hostel students. Built
+          the org from the ground up — Shopify integration, order workflows, ops processes, early growth experiments —
+          leading a cross-functional team across dev, marketing, and operations.</p>
+        <div class="xp-metric"><span class="num">Day 1</span><span class="lbl">Founding team, full stack of hats</span></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ================= MARQUEE ================= -->
+  <div class="marquee" aria-hidden="true">
+    <div class="mq-in" id="mq">
+      <span>One catalog<span class="acc"> — </span>Every channel<span class="acc"> — </span>Always current<span class="acc"> ///</span></span><span>Flagship build<span class="acc"> — </span>Attribyte<span class="acc"> ///</span></span>
+    </div>
+  </div>
+
+  <!-- ================= 03 ATTRIBYTE ================= -->
+  <section id="attribyte" aria-labelledby="attribyte-h">
+    <div class="hwrap" id="hwrap">
+      <div class="htrack" id="htrack">
+
+        <article class="panel panel-title">
+          <span class="bg-num" aria-hidden="true">03</span>
+          <p class="live-pill" data-p><span class="dot"></span>Flagship — Live product</p>
+          <h3 id="attribyte-h" data-p>Attri<span class="acc">byte</span></h3>
+          <p class="p-body" data-p><strong>One catalog. Every channel. Always current.</strong><br>
+            The catalog backbone for D2C brands selling on more than one channel — built, shipped, and reshaped
+            solo as founder-PM.</p>
+          <div class="cta-row" data-p>
+            <a class="btn btn-solid" href="https://attribyte.vercel.app/" target="_blank" rel="noopener" data-cursor="Open">Open live app <span class="ar">↗</span></a>
+          </div>
+          <p class="p-foot mono" data-p>Scroll to read the story →</p>
+        </article>
+
+        <article class="panel">
+          <span class="bg-num" aria-hidden="true">A</span>
+          <p class="p-kicker mono" data-p>Chapter A — The problem</p>
+          <h3 data-p>Catalog drift is a <span class="acc">daily tax</span></h3>
+          <p class="p-body" data-p>D2C brands stopped being single-channel. Prices fall out of sync, attributes
+            disagree, inventory lies — every day, across Shopify, Amazon, Faire, and TikTok Shop. The only
+            alternative: enterprise PIM at <strong>$50k–$500k a year</strong> and 6-month deploys.</p>
+          <div class="p-stats">
+            <div class="p-stat"><span class="num"><span data-count="2.7" data-dec="1">0</span></span><span class="lbl">Median channels per D2C brand — up from 1.2 in 2021</span></div>
+            <div class="p-stat"><span class="num"><span data-count="34">0</span>%</span><span class="lbl">YoY growth of multi-channel brands vs 9% Shopify-only</span></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <span class="bg-num" aria-hidden="true">B</span>
+          <p class="p-kicker mono" data-p>Chapter B — The reshape</p>
+          <h3 data-p>I killed my own <span class="acc">roadmap</span></h3>
+          <p class="p-body" data-p>v1.2 framed Attribyte as an AI onboarding tool that pushes to Shopify. I ran the
+            frame through <strong>twelve falsification tests</strong> — it failed all of them. A feature, not a company.
+            So v1.3 reshaped it into the synchronization layer: onboarding is the first 30 minutes of a customer's
+            life; <strong>the next two years are the sync</strong>.</p>
+          <div class="p-stats">
+            <div class="p-stat"><span class="num"><span data-count="12">0</span></span><span class="lbl">Falsification tests run against the original frame</span></div>
+            <div class="p-stat"><span class="num">≤<span data-count="14">0</span>d</span><span class="lbl">Activation redefined: second channel connected within 14 days</span></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <span class="bg-num" aria-hidden="true">C</span>
+          <p class="p-kicker mono" data-p>Chapter C — The product</p>
+          <h3 data-p>Three layers, <span class="acc">one schema</span></h3>
+          <ul class="layers" data-p>
+            <li><span class="l-num">L1</span><span class="l-name">Ingestion</span>
+              <span class="l-desc">Drop CSV / XLSX / JSON / PDF. AI maps supplier columns to the canonical schema in minutes — with memory, so no column is mapped twice.</span></li>
+            <li><span class="l-num">L2</span><span class="l-name">Synchronization</span>
+              <span class="l-desc">Direct-write connectors — Shopify, Amazon SP-API, Faire, TikTok Shop, headless webhooks. Rate-limit-aware, idempotent, bi-directional.</span></li>
+            <li><span class="l-num">L3</span><span class="l-name">Governance</span>
+              <span class="l-desc">Continuous drift detection, one-click fixes, audit log, restore-to-last-good. The reason the product opens daily, not quarterly.</span></li>
+          </ul>
+          <p class="p-foot mono" data-p>Stack: Next.js · TypeScript · Supabase · Claude · Vercel</p>
+        </article>
+
+        <article class="panel">
+          <span class="bg-num" aria-hidden="true">D</span>
+          <p class="p-kicker mono" data-p>Chapter D — The outcome</p>
+          <h3 data-p>Pricing now follows <span class="acc">value</span></h3>
+          <p class="p-body" data-p>Pricing moved from SKU count to <strong>connected channels × SKUs</strong> — every
+            new channel is a natural upgrade event. ACV roughly quadruples; the north star becomes
+            <strong>active brands with 2+ connected channels</strong>.</p>
+          <div class="p-stats">
+            <div class="p-stat"><span class="num">$<span data-count="44">0</span>M</span><span class="lbl">Reachable ARR at the high end — ~4× the prior frame</span></div>
+            <div class="p-stat"><span class="num"><span data-count="30">0</span>min</span><span class="lbl">Target time-to-first-export for a new user</span></div>
+            <div class="p-stat"><span class="num"><span data-count="98">0</span>%</span><span class="lbl">Target push success rate per channel</span></div>
+          </div>
+          <div class="cta-row" data-p style="margin-top:2.5rem">
+            <a class="btn" href="https://attribyte.vercel.app/" target="_blank" rel="noopener" data-cursor="Open">attribyte.vercel.app <span class="ar">↗</span></a>
+          </div>
+        </article>
+
+      </div>
+      <div class="hprog" aria-hidden="true">
+        <span class="count" id="hcount">1 / 5</span>
+        <span class="track"><span class="fill" id="hfill"></span></span>
+        <span class="count">Attribyte — PRD v1.3</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 04 RECOGNITION ================= -->
+  <section class="sec" id="recognition" aria-labelledby="rec-h">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2 id="rec-h">Recognition</h2>
+      <span class="sec-note mono">Paper trail</span>
+    </div>
+    <div class="rec-grid">
+      <div class="rec-col" data-reveal>
+        <h3>Research & Academic</h3>
+        <ul>
+          <li>Stanford University — MS, Management Science &amp; Engineering<span class="sub">Graduate student · Sept 2026 – June 2028</span></li>
+          <li>University of Mumbai — BE, Computer Science<span class="sub">Aug 2019 – May 2023</span></li>
+          <li>Published & presented at ICARTSEM '23 — international conference<span class="sub">Paper accepted in a peer-reviewed journal</span></li>
+          <li>Academic Achiever Award — two consecutive years</li>
+          <li>JEE batch topper · 50% merit engineering scholarship</li>
+          <li>CV system detecting errors in scanned form documents<span class="sub">Python · OpenCV · NumPy — +30% validation accuracy (2022–23)</span></li>
+        </ul>
+      </div>
+      <div class="rec-col" data-reveal>
+        <h3>Certifications</h3>
+        <ul>
+          <li>Product Management<span class="sub">Great Learning</span></li>
+          <li>Data Science<span class="sub">Pantech E-Learning</span></li>
+          <li>DSA in Python<span class="sub">Great Learning</span></li>
+          <li>Digital Marketing<span class="sub">Google Garage</span></li>
+          <li>Introduction to Operations<span class="sub">IIM Bangalore</span></li>
+        </ul>
+      </div>
+      <div class="rec-col" data-reveal>
+        <h3>Competition</h3>
+        <ul>
+          <li>1st Runner-up<span class="sub">National-level technical poster competition</span></li>
+          <li>2nd Runner-up<span class="sub">State-level science fair</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 05 CONTACT ================= -->
+  <section class="sec" id="contact" aria-labelledby="contact-h2">
+    <p class="contact-kicker mono" data-reveal>05 — Contact · Open to product roles</p>
+    <h2 class="contact-h" id="contact-h2">
+      <span class="ln"><span class="ln-in" data-cline>Let's build</span></span>
+      <span class="ln"><span class="ln-in hollow" data-cline>something</span></span>
+      <span class="ln"><span class="ln-in" data-cline>that <span style="color:var(--accent)">ships</span></span></span>
+    </h2>
+    <p class="contact-sub" data-reveal>No forms. No skill bars. One inbox — replies fast.</p>
+    <div class="contact-actions" data-reveal>
+      <button class="btn btn-solid" id="copyBtn" data-cursor="Copy" type="button">
+        <span id="copyLabel">shubham9@stanford.edu</span>
+      </button>
+      <a class="btn" href="mailto:shubham9@stanford.edu" data-cursor="Email">Open mail <span class="ar">→</span></a>
+    </div>
+    <nav class="contact-links" aria-label="Profiles" data-reveal>
+      <!-- TODO: replace href with your exact LinkedIn profile URL -->
+      <a class="cl" href="https://www.linkedin.com/in/shubham-suvarna" target="_blank" rel="noopener" data-cursor="Visit">
+        <span class="cl-name">LinkedIn</span><span class="cl-meta">/shubham-suvarna</span><span class="ar">↗</span></a>
+      <a class="cl" href="https://github.com/Shubham3091" target="_blank" rel="noopener" data-cursor="Visit">
+        <span class="cl-name">GitHub</span><span class="cl-meta">/Shubham3091</span><span class="ar">↗</span></a>
+      <a class="cl" href="https://attribyte.vercel.app/" target="_blank" rel="noopener" data-cursor="Open">
+        <span class="cl-name">Attribyte</span><span class="cl-meta">Live product</span><span class="ar">↗</span></a>
+    </nav>
+  </section>
+</main>
+
+<footer>
+  <span class="mono">© 2026 Shubham Suvarna</span>
+  <span class="mono">Designed & built in pitch black</span>
+  <span class="mono">Archivo Black · Space Grotesk · JetBrains Mono</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+"use strict";
+var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var finePointer = window.matchMedia("(pointer: fine)").matches;
+var hasGSAP = typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined";
+if (reduced || !hasGSAP) document.documentElement.classList.add("reduced");
+if (hasGSAP && !reduced) gsap.registerPlugin(ScrollTrigger);
+
+/* ============ PARTICLE MESH ============ */
+var mesh = (function(){
+  var cvs = document.getElementById("mesh");
+  var ctx = cvs.getContext("2d");
+  var pts = [], W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2);
+  var mouse = {x:-9999, y:-9999};
+  var running = !reduced, visible = true, raf = null;
+
+  function resize(){
+    var r = cvs.parentElement.getBoundingClientRect();
+    W = r.width; H = r.height;
+    cvs.width = W * DPR; cvs.height = H * DPR;
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    seed();
+  }
+  function seed(){
+    pts = [];
+    var n = Math.min(110, Math.floor(W * H / 16000));
+    for (var i = 0; i < n; i++){
+      pts.push({ x: Math.random()*W, y: Math.random()*H,
+        vx: (Math.random()-.5)*.35, vy: (Math.random()-.5)*.35,
+        r: 1 + Math.random()*1.6 });
+    }
+  }
+  function step(){
+    ctx.clearRect(0, 0, W, H);
+    var i, j, p, q, dx, dy, d;
+    for (i = 0; i < pts.length; i++){
+      p = pts[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+      dx = p.x - mouse.x; dy = p.y - mouse.y;
+      d = Math.sqrt(dx*dx + dy*dy);
+      if (d < 140 && d > 0.1){
+        p.x += (dx/d) * (140-d) * .03;
+        p.y += (dy/d) * (140-d) * .03;
+      }
+    }
+    ctx.lineWidth = 1;
+    for (i = 0; i < pts.length; i++){
+      for (j = i+1; j < pts.length; j++){
+        p = pts[i]; q = pts[j];
+        dx = p.x - q.x; dy = p.y - q.y;
+        d = dx*dx + dy*dy;
+        if (d < 13225){ // 115px
+          var a = (1 - d/13225) * .16;
+          ctx.strokeStyle = "rgba(244,244,240," + a.toFixed(3) + ")";
+          ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+        }
+      }
+    }
+    for (i = 0; i < pts.length; i++){
+      p = pts[i];
+      ctx.fillStyle = "rgba(200,255,46,.85)";
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.2832); ctx.fill();
+    }
+  }
+  function loop(){
+    raf = null;
+    if (running && visible && !document.hidden){
+      step();
+      raf = requestAnimationFrame(loop);
+    }
+  }
+  function kick(){ if (!raf) raf = requestAnimationFrame(loop); }
+
+  window.addEventListener("resize", function(){ resize(); if (reduced) step(); });
+  window.addEventListener("pointermove", function(e){
+    var r = cvs.getBoundingClientRect();
+    mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+  }, {passive:true});
+  document.addEventListener("visibilitychange", kick);
+  if ("IntersectionObserver" in window){
+    new IntersectionObserver(function(en){ visible = en[0].isIntersecting; kick(); })
+      .observe(cvs.parentElement);
+  }
+  resize();
+  if (reduced) step(); else kick();
+  return {
+    get running(){ return running; },
+    set running(v){ running = v; if (v) kick(); else step(); }
+  };
+})();
+
+/* field toggle — explicit 300ms state transitions in CSS */
+var ftBtn = document.getElementById("fieldToggle");
+ftBtn.addEventListener("click", function(){
+  mesh.running = !mesh.running;
+  ftBtn.setAttribute("aria-pressed", String(mesh.running));
+  ftBtn.textContent = mesh.running ? "Field: On" : "Field: Off";
+});
+
+/* ============ CUSTOM CURSOR ============ */
+if (finePointer && hasGSAP && !reduced){
+  document.documentElement.classList.add("cursor-on");
+  var dotEl = document.querySelector(".cur-dot");
+  var ringEl = document.querySelector(".cur-ring");
+  var labEl = ringEl.querySelector(".cur-label");
+  var dx = gsap.quickTo(dotEl, "x", {duration:.12, ease:"power2.out"});
+  var dy = gsap.quickTo(dotEl, "y", {duration:.12, ease:"power2.out"});
+  var rx = gsap.quickTo(ringEl, "x", {duration:.42, ease:"power3.out"});
+  var ry = gsap.quickTo(ringEl, "y", {duration:.42, ease:"power3.out"});
+  window.addEventListener("pointermove", function(e){
+    dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY);
+  }, {passive:true});
+  document.addEventListener("pointerover", function(e){
+    var t = e.target.closest("a, button, [data-cursor]");
+    if (t){
+      ringEl.classList.add("is-hover");
+      labEl.textContent = t.getAttribute("data-cursor") || "";
+    }
+  });
+  document.addEventListener("pointerout", function(e){
+    if (e.target.closest("a, button, [data-cursor]")) ringEl.classList.remove("is-hover");
+  });
+  window.addEventListener("pointerdown", function(){ ringEl.classList.add("is-down"); });
+  window.addEventListener("pointerup", function(){ ringEl.classList.remove("is-down"); });
+}
+
+/* ============ COUNTERS ============ */
+function bindCounters(scope, containerAnim){
+  var els = (scope || document).querySelectorAll("[data-count]");
+  els.forEach(function(el){
+    if (el.dataset.bound) return;
+    el.dataset.bound = "1";
+    var target = parseFloat(el.getAttribute("data-count"));
+    var dec = parseInt(el.getAttribute("data-dec") || "0", 10);
+    if (!hasGSAP || reduced){ el.textContent = target.toFixed(dec); return; }
+    var obj = {v:0};
+    gsap.to(obj, {
+      v: target, duration: 1.4, ease: "power2.out",
+      scrollTrigger: {
+        trigger: el, start: containerAnim ? "left 80%" : "top 88%",
+        containerAnimation: containerAnim, once: true
+      },
+      onUpdate: function(){ el.textContent = obj.v.toFixed(dec); }
+    });
+  });
+}
+
+/* ============ ANIMATIONS ============ */
+if (hasGSAP && !reduced){
+
+  /* hero — reveal from bottom, sequential stagger */
+  var intro = gsap.timeline({defaults:{ease:"power4.out"}});
+  intro.from(".hero .ln-in", {yPercent:115, duration:1.15, stagger:.13}, .25)
+       .from("[data-hero-fade]", {y:28, autoAlpha:0, duration:.8, stagger:.12, ease:"power3.out"}, "-=.7")
+       .from("[data-hero-card]", {x:36, autoAlpha:0, duration:.9, ease:"power3.out"}, "-=.6")
+       .from(".scroll-cue", {autoAlpha:0, duration:.6}, "-=.3");
+
+  /* generic reveals */
+  gsap.utils.toArray("[data-reveal]").forEach(function(el){
+    gsap.from(el, {y:48, autoAlpha:0, duration:.85, ease:"power3.out",
+      scrollTrigger:{trigger:el, start:"top 86%", once:true}});
+  });
+
+  /* about list — sequential slide-in */
+  gsap.from(".about-list li", {x:-36, autoAlpha:0, duration:.7, ease:"power3.out", stagger:.09,
+    scrollTrigger:{trigger:".about-list", start:"top 80%", once:true}});
+
+  /* journey cards — slide in & expand sequentially */
+  gsap.utils.toArray(".xp-card").forEach(function(card, i){
+    var tl = gsap.timeline({scrollTrigger:{trigger:card, start:"top 80%", once:true}});
+    tl.fromTo(card,
+        {clipPath:"inset(0 0 100% 0)", y:70},
+        {clipPath:"inset(0 0 0% 0)", y:0, duration:.95, ease:"power3.inOut", delay:i*.06})
+      .from(card.querySelectorAll(".xp-top > *, .xp-body > *"),
+        {y:26, autoAlpha:0, duration:.55, stagger:.07, ease:"power3.out"}, "-=.35");
+  });
+
+  /* ============ HORIZONTAL FLAGSHIP GALLERY ============ */
+  var track = document.getElementById("htrack");
+  var panels = gsap.utils.toArray(".panel");
+  var fill = document.getElementById("hfill");
+  var count = document.getElementById("hcount");
+  var n = panels.length;
+
+  var hscroll = gsap.to(track, {
+    xPercent: -100 * (n - 1),
+    ease: "none",
+    scrollTrigger: {
+      trigger: "#attribyte",
+      pin: true,
+      scrub: 1,
+      anticipatePin: 1,
+      end: function(){ return "+=" + (track.scrollWidth - window.innerWidth); },
+      snap: {
+        snapTo: 1 / (n - 1),
+        duration: {min:.25, max:.65},
+        delay: .05,
+        ease: "power1.inOut"
+      },
+      onUpdate: function(self){
+        fill.style.transform = "scaleX(" + self.progress + ")";
+        count.textContent = (Math.round(self.progress * (n - 1)) + 1) + " / " + n;
+      },
+      invalidateOnRefresh: true
+    }
+  });
+
+  /* per-panel story reveals, driven by the horizontal container */
+  panels.forEach(function(panel, idx){
+    var items = panel.querySelectorAll("[data-p]");
+    if (idx === 0){
+      gsap.from(items, {y:42, autoAlpha:0, duration:.8, stagger:.09, ease:"power3.out",
+        scrollTrigger:{trigger:"#attribyte", start:"top 70%", once:true}});
+    } else {
+      gsap.from(items, {x:90, autoAlpha:0, duration:.8, stagger:.08, ease:"power3.out",
+        scrollTrigger:{trigger:panel, containerAnimation:hscroll, start:"left 72%", once:true}});
+    }
+    bindCounters(panel, idx === 0 ? null : hscroll);
+  });
+
+  /* counters outside the gallery */
+  bindCounters(document.getElementById("journey"), null);
+
+  /* contact headline — reveal from bottom */
+  gsap.from("[data-cline]", {yPercent:115, duration:1.05, stagger:.12, ease:"power4.out",
+    scrollTrigger:{trigger:"#contact", start:"top 70%", once:true}});
+
+  window.addEventListener("load", function(){ ScrollTrigger.refresh(); });
+} else {
+  /* no-motion fallback: finalize counters */
+  bindCounters(document, null);
+}
+
+/* ============ COPY EMAIL — explicit hover/active/loading states ============ */
+var copyBtn = document.getElementById("copyBtn");
+var copyLabel = document.getElementById("copyLabel");
+var EMAIL = "shubham9@stanford.edu";
+var busy = false;
+copyBtn.addEventListener("click", function(){
+  if (busy) return;
+  busy = true;
+  copyBtn.classList.add("is-loading");      /* loading state, 300ms ease-out via CSS */
+  copyLabel.textContent = "Copying…";
+  function done(ok){
+    setTimeout(function(){
+      copyBtn.classList.remove("is-loading");
+      copyBtn.classList.add("is-done");
+      copyLabel.textContent = ok ? "Copied ✓" : EMAIL;
+      setTimeout(function(){
+        copyBtn.classList.remove("is-done");
+        copyLabel.textContent = EMAIL;
+        busy = false;
+      }, 1600);
+    }, 300);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(EMAIL).then(function(){ done(true); }, function(){ done(false); });
+  } else {
+    var ta = document.createElement("textarea");
+    ta.value = EMAIL; document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(true); }
+    catch(e){ done(false); }
+    document.body.removeChild(ta);
+  }
+});
+})();
+</script>
+</body>
+</html>
