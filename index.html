@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Shubham Suvarna — Product Manager</title>
 <meta name="description" content="Shubham Suvarna — 0→1 Product Manager across AI, platform & consumer products. Builder of Attribyte.">
+<meta name="theme-color" content="#070707">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shubham3091.github.io/">
+<meta property="og:title" content="Shubham Suvarna — Product Manager · AI, Platform & Consumer">
+<meta property="og:description" content="0→1 product builder. From rapid MVPs to platforms enabling $30M/yr in savings. Flagship: Attribyte — one catalog, every channel, always current.">
+<meta property="og:image" content="https://shubham3091.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shubham Suvarna — Product Manager · AI, Platform & Consumer">
+<meta name="twitter:description" content="0→1 product builder. From rapid MVPs to platforms enabling $30M/yr in savings. Flagship: Attribyte.">
+<meta name="twitter:image" content="https://shubham3091.github.io/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -25,10 +37,11 @@
   --font-body:'Space Grotesk',Helvetica,Arial,sans-serif;
   --font-mono:'JetBrains Mono',ui-monospace,monospace;
   --pad:clamp(1.25rem,4vw,4rem);
+  --head-h:4.2rem;
 }
 /* ============ RESET / BASE ============ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 html.reduced{scroll-behavior:auto}
 body{
   background:var(--bg);color:var(--ink);
@@ -41,6 +54,7 @@ a{color:inherit;text-decoration-thickness:1px;text-underline-offset:4px}
 a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
   outline:2px solid var(--accent);outline-offset:4px;border-radius:2px;
 }
+section[id]{scroll-margin-top:var(--head-h)}
 @media (pointer:fine){
   html.cursor-on, html.cursor-on a, html.cursor-on button{cursor:none}
 }
@@ -79,8 +93,10 @@ h2{font-family:var(--font-display);font-size:clamp(2.4rem,6.5vw,5rem);line-heigh
 /* ============ HEADER ============ */
 .site-head{position:fixed;inset:0 0 auto 0;z-index:200;display:flex;align-items:center;gap:2rem;
   padding:1.1rem var(--pad);mix-blend-mode:difference}
-.brand{font-family:var(--font-display);font-size:1rem;letter-spacing:.05em;text-decoration:none}
+.brand{font-family:var(--font-display);font-size:1rem;letter-spacing:.05em;text-decoration:none;position:relative;z-index:2}
 .brand span{color:var(--accent)}
+/* nav-panel is a no-box wrapper on desktop so its children sit in the header bar */
+.nav-panel{display:contents}
 .site-nav{margin-left:auto;display:flex;gap:1.75rem;overflow-x:auto;max-width:70vw}
 .site-nav a{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;
   text-decoration:none;color:var(--ink);position:relative;white-space:nowrap;padding:.25rem 0;
@@ -91,9 +107,15 @@ h2{font-family:var(--font-display);font-size:clamp(2.4rem,6.5vw,5rem);line-heigh
 .site-nav a:hover::after{transform:scaleX(1)}
 .field-btn{background:none;border:1px solid var(--ink);color:var(--ink);
   font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
-  padding:.45rem .8rem;transition:background-color var(--t-base),color var(--t-base),border-color var(--t-base),transform 120ms ease-out}
+  padding:.45rem .8rem;cursor:pointer;
+  transition:background-color var(--t-base),color var(--t-base),border-color var(--t-base),transform 120ms ease-out}
 .field-btn:hover{background:var(--ink);color:#070707}
 .field-btn:active{transform:scale(.96)}
+/* hamburger — hidden on desktop, shown on mobile */
+.nav-toggle{display:none;width:44px;height:44px;flex-direction:column;align-items:center;justify-content:center;
+  gap:5px;background:none;border:none;cursor:pointer;position:relative;z-index:2;margin-left:auto;padding:0}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;
+  transition:transform var(--t-base),opacity var(--t-base)}
 
 /* ============ HERO ============ */
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
@@ -114,7 +136,7 @@ h2{font-family:var(--font-display);font-size:clamp(2.4rem,6.5vw,5rem);line-heigh
 .cta-row{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.5rem}
 .btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-mono);font-size:.8125rem;
   letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:1rem 1.5rem;border:1px solid var(--ink);
-  color:var(--ink);background:transparent;
+  color:var(--ink);background:transparent;cursor:pointer;
   transition:background-color var(--t-base),color var(--t-base),border-color var(--t-base),transform 120ms ease-out}
 .btn:hover{background:var(--ink);color:#070707}
 .btn:active{transform:scale(.97)}
@@ -299,9 +321,74 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
   .site-nav{gap:1.1rem}
   .site-nav a .nv{display:none}
 }
-@media (max-width:600px){
-  .dossier{display:none}
-  .panel{padding-top:6rem}
+
+/* ============ MOBILE ( ≤760px ) — hamburger nav + stacked flagship ============ */
+@media (max-width:760px){
+  /* difference blend can misbehave behind the menu overlay; drop it on mobile (all sections are dark anyway) */
+  .site-head{mix-blend-mode:normal;gap:1rem}
+
+  /* show hamburger, turn nav-panel into a full-screen overlay */
+  .nav-toggle{display:inline-flex}
+  .nav-panel{
+    position:fixed;inset:0;z-index:1;
+    background:rgba(7,7,7,.97);backdrop-filter:blur(12px);
+    display:flex;flex-direction:column;justify-content:center;gap:2.25rem;
+    padding:calc(var(--head-h) + 1.5rem) var(--pad) 3rem;
+    opacity:0;visibility:hidden;transform:translateY(-6px);
+    transition:opacity var(--t-base),transform var(--t-base),visibility var(--t-base);
+  }
+  html.menu-open .nav-panel{opacity:1;visibility:visible;transform:none}
+
+  .site-nav{margin:0;flex-direction:column;gap:.25rem;max-width:none;overflow:visible}
+  .site-nav a{font-family:var(--font-display);font-size:clamp(1.5rem,8vw,2.1rem);letter-spacing:.01em;
+    text-transform:uppercase;padding:.55rem 0}
+  .site-nav a .nv{display:inline;font-family:var(--font-mono);font-size:.85rem;color:var(--accent);
+    margin-right:.6rem;vertical-align:middle}
+  .site-nav a::after{display:none}
+  .field-btn{align-self:flex-start;font-size:.78rem;padding:.7rem 1.1rem;margin-top:.5rem}
+
+  /* hamburger → X */
+  html.menu-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  html.menu-open .nav-toggle span:nth-child(2){opacity:0}
+  html.menu-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  /* lock background scroll while the menu is open */
+  html.menu-open,html.menu-open body{overflow:hidden}
+
+  /* section heading note drops below the big title */
+  .sec-head{flex-wrap:wrap;gap:.75rem 1.25rem}
+  .sec-note{margin-left:0;flex-basis:100%}
+
+  /* flagship: stack the 5 panels vertically, no fixed-height clipping */
+  .htrack{flex-direction:column}
+  .panel{flex:0 0 auto;min-height:auto;max-height:none;overflow:visible;
+    justify-content:flex-start;border-right:none;border-bottom:1px solid var(--line);
+    padding:clamp(3.5rem,9vh,5rem) var(--pad)}
+  .panel:last-child{border-bottom:none}
+  .panel h3{max-width:none}
+  .panel .bg-num{font-size:clamp(5rem,26vw,11rem);right:1rem;opacity:.7}
+  .hprog{display:none}
+
+  /* layers list: name on top, description full-width beneath */
+  .layers li{grid-template-columns:auto 1fr;gap:.4rem 1rem;align-items:baseline}
+  .layers .l-desc{grid-column:1 / -1}
+
+  /* full-width primary buttons read better on phones */
+  .cta-row .btn{flex:1 1 auto;justify-content:center}
+  #copyBtn{min-width:0;width:100%}
+  .contact-actions .btn{flex:1 1 100%}
+}
+
+/* ============ VERY SMALL ( ≤400px ) ============ */
+@media (max-width:400px){
+  .hero h1{font-size:clamp(2.3rem,13vw,3rem)}
+  .contact-h{font-size:clamp(1.9rem,11vw,3rem)}
+  .xp-top{padding:1.25rem 1.25rem 0}
+  .xp-body{padding:1rem 1.25rem 1.25rem}
+  .rec-col{padding:1.5rem}
+  .dossier{padding:1.35rem}
+  .drow{flex-direction:column;gap:.15rem}
+  .drow dd{text-align:left}
 }
 </style>
 </head>
@@ -313,14 +400,19 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
 
 <header class="site-head">
   <a class="brand" href="#top">SS<span>.</span>26</a>
-  <nav class="site-nav" aria-label="Primary">
-    <a href="#about"><span class="nv">01 </span>About</a>
-    <a href="#journey"><span class="nv">02 </span>Journey</a>
-    <a href="#attribyte"><span class="nv">03 </span>Attribyte</a>
-    <a href="#recognition"><span class="nv">04 </span>Recognition</a>
-    <a href="#contact"><span class="nv">05 </span>Contact</a>
-  </nav>
-  <button class="field-btn" id="fieldToggle" aria-pressed="true" aria-label="Toggle particle field animation">Field: On</button>
+  <div class="nav-panel" id="navPanel">
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#about"><span class="nv">01 </span>About</a>
+      <a href="#journey"><span class="nv">02 </span>Journey</a>
+      <a href="#attribyte"><span class="nv">03 </span>Attribyte</a>
+      <a href="#recognition"><span class="nv">04 </span>Recognition</a>
+      <a href="#contact"><span class="nv">05 </span>Contact</a>
+    </nav>
+    <button class="field-btn" id="fieldToggle" aria-pressed="true" aria-label="Toggle particle field animation">Field: On</button>
+  </div>
+  <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navPanel" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </header>
 
 <main id="main">
@@ -656,6 +748,7 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
 "use strict";
 var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 var finePointer = window.matchMedia("(pointer: fine)").matches;
+var smallScreen = window.matchMedia("(max-width: 760px)").matches;
 var hasGSAP = typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined";
 if (reduced || !hasGSAP) document.documentElement.classList.add("reduced");
 if (hasGSAP && !reduced) gsap.registerPlugin(ScrollTrigger);
@@ -677,7 +770,9 @@ var mesh = (function(){
   }
   function seed(){
     pts = [];
-    var n = Math.min(110, Math.floor(W * H / 16000));
+    /* fewer particles on phones / touch devices — lighter on battery & paint */
+    var cap = (smallScreen || !finePointer) ? 48 : 110;
+    var n = Math.min(cap, Math.floor(W * H / 16000));
     for (var i = 0; i < n; i++){
       pts.push({ x: Math.random()*W, y: Math.random()*H,
         vx: (Math.random()-.5)*.35, vy: (Math.random()-.5)*.35,
@@ -752,6 +847,33 @@ ftBtn.addEventListener("click", function(){
   ftBtn.setAttribute("aria-pressed", String(mesh.running));
   ftBtn.textContent = mesh.running ? "Field: On" : "Field: Off";
 });
+
+/* ============ MOBILE MENU ============ */
+(function(){
+  var root = document.documentElement;
+  var toggle = document.getElementById("navToggle");
+  var panel = document.getElementById("navPanel");
+  if (!toggle || !panel) return;
+  function setMenu(open){
+    root.classList.toggle("menu-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+  toggle.addEventListener("click", function(){
+    setMenu(!root.classList.contains("menu-open"));
+  });
+  /* close after tapping a section link */
+  panel.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){ setMenu(false); });
+  });
+  /* close on Escape, and whenever we grow back to desktop width */
+  document.addEventListener("keydown", function(e){
+    if (e.key === "Escape") setMenu(false);
+  });
+  window.addEventListener("resize", function(){
+    if (window.innerWidth > 760) setMenu(false);
+  });
+})();
 
 /* ============ CUSTOM CURSOR ============ */
 if (finePointer && hasGSAP && !reduced){
@@ -831,48 +953,60 @@ if (hasGSAP && !reduced){
         {y:26, autoAlpha:0, duration:.55, stagger:.07, ease:"power3.out"}, "-=.35");
   });
 
-  /* ============ HORIZONTAL FLAGSHIP GALLERY ============ */
-  var track = document.getElementById("htrack");
+  /* ============ FLAGSHIP GALLERY ============ */
   var panels = gsap.utils.toArray(".panel");
-  var fill = document.getElementById("hfill");
-  var count = document.getElementById("hcount");
-  var n = panels.length;
 
-  var hscroll = gsap.to(track, {
-    xPercent: -100 * (n - 1),
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#attribyte",
-      pin: true,
-      scrub: 1,
-      anticipatePin: 1,
-      end: function(){ return "+=" + (track.scrollWidth - window.innerWidth); },
-      snap: {
-        snapTo: 1 / (n - 1),
-        duration: {min:.25, max:.65},
-        delay: .05,
-        ease: "power1.inOut"
-      },
-      onUpdate: function(self){
-        fill.style.transform = "scaleX(" + self.progress + ")";
-        count.textContent = (Math.round(self.progress * (n - 1)) + 1) + " / " + n;
-      },
-      invalidateOnRefresh: true
-    }
-  });
+  if (!smallScreen){
+    /* desktop / tablet: pinned horizontal scroll */
+    var track = document.getElementById("htrack");
+    var fill = document.getElementById("hfill");
+    var count = document.getElementById("hcount");
+    var n = panels.length;
 
-  /* per-panel story reveals, driven by the horizontal container */
-  panels.forEach(function(panel, idx){
-    var items = panel.querySelectorAll("[data-p]");
-    if (idx === 0){
-      gsap.from(items, {y:42, autoAlpha:0, duration:.8, stagger:.09, ease:"power3.out",
-        scrollTrigger:{trigger:"#attribyte", start:"top 70%", once:true}});
-    } else {
-      gsap.from(items, {x:90, autoAlpha:0, duration:.8, stagger:.08, ease:"power3.out",
-        scrollTrigger:{trigger:panel, containerAnimation:hscroll, start:"left 72%", once:true}});
-    }
-    bindCounters(panel, idx === 0 ? null : hscroll);
-  });
+    var hscroll = gsap.to(track, {
+      xPercent: -100 * (n - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#attribyte",
+        pin: true,
+        scrub: 1,
+        anticipatePin: 1,
+        end: function(){ return "+=" + (track.scrollWidth - window.innerWidth); },
+        snap: {
+          snapTo: 1 / (n - 1),
+          duration: {min:.25, max:.65},
+          delay: .05,
+          ease: "power1.inOut"
+        },
+        onUpdate: function(self){
+          fill.style.transform = "scaleX(" + self.progress + ")";
+          count.textContent = (Math.round(self.progress * (n - 1)) + 1) + " / " + n;
+        },
+        invalidateOnRefresh: true
+      }
+    });
+
+    /* per-panel story reveals, driven by the horizontal container */
+    panels.forEach(function(panel, idx){
+      var items = panel.querySelectorAll("[data-p]");
+      if (idx === 0){
+        gsap.from(items, {y:42, autoAlpha:0, duration:.8, stagger:.09, ease:"power3.out",
+          scrollTrigger:{trigger:"#attribyte", start:"top 70%", once:true}});
+      } else {
+        gsap.from(items, {x:90, autoAlpha:0, duration:.8, stagger:.08, ease:"power3.out",
+          scrollTrigger:{trigger:panel, containerAnimation:hscroll, start:"left 72%", once:true}});
+      }
+      bindCounters(panel, idx === 0 ? null : hscroll);
+    });
+  } else {
+    /* mobile: panels are stacked vertically — simple vertical reveals, no pin */
+    panels.forEach(function(panel){
+      var items = panel.querySelectorAll("[data-p]");
+      gsap.from(items, {y:34, autoAlpha:0, duration:.7, stagger:.08, ease:"power3.out",
+        scrollTrigger:{trigger:panel, start:"top 84%", once:true}});
+      bindCounters(panel, null);
+    });
+  }
 
   /* counters outside the gallery */
   bindCounters(document.getElementById("journey"), null);
@@ -895,28 +1029,39 @@ var busy = false;
 copyBtn.addEventListener("click", function(){
   if (busy) return;
   busy = true;
-  copyBtn.classList.add("is-loading");      /* loading state, 300ms ease-out via CSS */
+  copyBtn.classList.remove("is-done");
+  copyBtn.classList.add("is-loading");
   copyLabel.textContent = "Copying…";
-  function done(ok){
+
+  function finish(ok){
+    copyBtn.classList.remove("is-loading");
+    copyBtn.classList.add("is-done");
+    copyLabel.textContent = ok ? "Copied ✓ — " + EMAIL : "Couldn't copy — tap “Open mail”";
     setTimeout(function(){
-      copyBtn.classList.remove("is-loading");
-      copyBtn.classList.add("is-done");
-      copyLabel.textContent = ok ? "Copied ✓" : EMAIL;
-      setTimeout(function(){
-        copyBtn.classList.remove("is-done");
-        copyLabel.textContent = EMAIL;
-        busy = false;
-      }, 1600);
-    }, 300);
+      copyBtn.classList.remove("is-done");
+      copyLabel.textContent = EMAIL;
+      busy = false;
+    }, 2200);
   }
+
   if (navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(EMAIL).then(function(){ done(true); }, function(){ done(false); });
+    navigator.clipboard.writeText(EMAIL).then(function(){ finish(true); }, function(){ finish(false); });
   } else {
-    var ta = document.createElement("textarea");
-    ta.value = EMAIL; document.body.appendChild(ta); ta.select();
-    try { document.execCommand("copy"); done(true); }
-    catch(e){ done(false); }
-    document.body.removeChild(ta);
+    /* fallback for older / non-secure contexts */
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = EMAIL;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.top = "-1000px";
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      finish(ok);
+    } catch (e){
+      finish(false);
+    }
   }
 });
 })();
