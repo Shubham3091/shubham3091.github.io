@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Shubham Suvarna — Product Manager</title>
-<meta name="description" content="Shubham Suvarna — 0→1 Product Manager across AI, platform & consumer products. Builder of Attribyte.">
+<title>Shubham Suvarna · Product Manager</title>
+<meta name="description" content="Shubham Suvarna · 0→1 Product Manager across AI, platform & consumer products. Builder of Engram, the company brain for AI agents.">
 <meta name="theme-color" content="#070707">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shubham3091.github.io/">
-<meta property="og:title" content="Shubham Suvarna — Product Manager · AI, Platform & Consumer">
-<meta property="og:description" content="0→1 product builder. From rapid MVPs to platforms enabling $30M/yr in savings. Flagship: Attribyte — one catalog, every channel, always current.">
+<meta property="og:title" content="Shubham Suvarna · Product Manager · AI, Platform & Consumer">
+<meta property="og:description" content="0→1 product builder. From rapid MVPs to platforms enabling $30M/yr in savings. Flagship: Engram, organizational memory made executable.">
 <meta property="og:image" content="https://shubham3091.github.io/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Shubham Suvarna — Product Manager · AI, Platform & Consumer">
-<meta name="twitter:description" content="0→1 product builder. From rapid MVPs to platforms enabling $30M/yr in savings. Flagship: Attribyte.">
+<meta name="twitter:title" content="Shubham Suvarna · Product Manager · AI, Platform & Consumer">
+<meta name="twitter:description" content="0→1 product builder. From rapid MVPs to platforms enabling $30M/yr in savings. Flagship: Engram, the company brain for AI agents.">
 <meta name="twitter:image" content="https://shubham3091.github.io/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -111,7 +111,7 @@ h2{font-family:var(--font-display);font-size:clamp(2.4rem,6.5vw,5rem);line-heigh
   transition:background-color var(--t-base),color var(--t-base),border-color var(--t-base),transform 120ms ease-out}
 .field-btn:hover{background:var(--ink);color:#070707}
 .field-btn:active{transform:scale(.96)}
-/* hamburger — hidden on desktop, shown on mobile */
+/* hamburger - hidden on desktop, shown on mobile */
 .nav-toggle{display:none;width:44px;height:44px;flex-direction:column;align-items:center;justify-content:center;
   gap:5px;background:none;border:none;cursor:pointer;position:relative;z-index:2;margin-left:auto;padding:0}
 .nav-toggle span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;
@@ -221,36 +221,36 @@ h2{font-family:var(--font-display);font-size:clamp(2.4rem,6.5vw,5rem);line-heigh
 @keyframes mq{to{transform:translateX(-50%)}}
 html.reduced .mq-in{animation:none}
 
-/* ============ ATTRIBYTE — HORIZONTAL ============ */
-#attribyte{position:relative;background:var(--bg)}
+/* ============ ENGRAM - HORIZONTAL ============ */
+#engram{position:relative;background:var(--bg)}
 .hwrap{overflow:hidden}
 .htrack{display:flex;will-change:transform}
 .panel{flex:0 0 100vw;min-height:100svh;max-height:100svh;overflow:hidden;
-  padding:clamp(5rem,9vh,7.5rem) var(--pad) clamp(3.5rem,7vh,5.5rem);position:relative;
+  padding:clamp(4.5rem,7.5vh,6rem) var(--pad) clamp(4.5rem,7vh,5.5rem);position:relative;
   display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--line)}
-html.reduced .panel{max-height:none;overflow:visible}
+html.reduced .hwrap{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
 .panel .bg-num{position:absolute;right:2rem;bottom:0;font-family:var(--font-display);
   font-size:clamp(8rem,28vw,24rem);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(244,244,240,.10);
   pointer-events:none;user-select:none}
 .p-kicker{color:var(--accent);margin-bottom:clamp(.9rem,2vh,1.5rem);display:flex;align-items:center;gap:.75rem}
 .p-kicker::before{content:"";width:2rem;height:1px;background:var(--accent)}
 .panel h3{font-family:var(--font-display);text-transform:uppercase;
-  font-size:clamp(2rem,min(7vw,11.5vh),6.5rem);line-height:.92;letter-spacing:-.01em;max-width:14ch}
+  font-size:clamp(1.75rem,min(5.2vw,6.4vh),3.8rem);line-height:.96;letter-spacing:-.01em;max-width:22ch}
 .panel h3 .acc{color:var(--accent)}
-.panel .p-body{margin-top:clamp(1.1rem,2.6vh,2rem);max-width:38rem;
-  font-size:clamp(.95rem,min(1.5vw,2.4vh),1.2rem);color:var(--ink)}
+.panel .p-body{margin-top:clamp(.8rem,1.8vh,1.3rem);max-width:40rem;
+  font-size:clamp(.9rem,min(1.2vw,1.9vh),1.05rem);line-height:1.55;color:var(--ink)}
 .panel .p-body strong{color:var(--accent);font-weight:600}
-.p-stats{display:flex;gap:clamp(1.5rem,4vw,3rem);margin-top:clamp(1.4rem,3.6vh,3rem);flex-wrap:wrap}
-.p-stat .num{font-family:var(--font-display);font-size:clamp(1.9rem,min(5vw,6.5vh),4rem);color:var(--accent);line-height:1}
+.p-stats{display:flex;gap:clamp(1.25rem,3.2vw,2.4rem);margin-top:clamp(1rem,2.4vh,1.8rem);flex-wrap:wrap}
+.p-stat .num{font-family:var(--font-display);font-size:clamp(1.6rem,min(3.8vw,4.8vh),2.9rem);color:var(--accent);line-height:1}
 .p-stat .lbl{color:var(--muted);font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;
   text-transform:uppercase;display:block;margin-top:.6rem;max-width:14rem}
-.layers{margin-top:clamp(1.4rem,3vh,2.5rem);border-top:1px solid var(--line);max-width:46rem;width:100%;list-style:none}
+.layers{margin-top:clamp(.9rem,2.2vh,1.6rem);border-top:1px solid var(--line);max-width:46rem;width:100%;list-style:none}
 .layers li{display:grid;grid-template-columns:3.2rem minmax(8rem,14rem) 1fr;gap:1.25rem;
-  padding:clamp(.8rem,2vh,1.3rem) 0;border-bottom:1px solid var(--line);align-items:baseline}
+  padding:clamp(.5rem,1.4vh,.9rem) 0;border-bottom:1px solid var(--line);align-items:baseline}
 .layers .l-num{font-family:var(--font-mono);color:var(--accent);font-size:.8125rem}
 .layers .l-name{font-family:var(--font-display);text-transform:uppercase;font-size:1.1rem}
 .layers .l-desc{color:var(--muted);font-size:.95rem}
-.p-foot{margin-top:clamp(1.4rem,3vh,2.5rem);color:var(--muted)}
+.p-foot{margin-top:clamp(.8rem,1.8vh,1.4rem);color:var(--muted)}
 .panel-title .live-pill{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--accent);
   color:var(--accent);font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;
   padding:.45rem .8rem;text-transform:uppercase;margin-bottom:clamp(1.2rem,2.6vh,2rem)}
@@ -259,9 +259,7 @@ html.reduced .panel{max-height:none;overflow:visible}
 .hprog .track{flex:1;height:1px;background:var(--line);position:relative}
 .hprog .fill{position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left}
 .hprog .count{font-family:var(--font-mono);font-size:.75rem;color:var(--muted);letter-spacing:.12em}
-html.reduced .htrack{flex-direction:column}
-html.reduced .panel{flex-basis:auto;border-right:none;border-bottom:1px solid var(--line);min-height:auto;
-  padding-top:5rem;padding-bottom:5rem}
+html.reduced .panel{scroll-snap-align:start}
 html.reduced .hprog{display:none}
 
 /* ============ RECOGNITION ============ */
@@ -322,10 +320,12 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
   .site-nav a .nv{display:none}
 }
 
-/* ============ MOBILE ( ≤760px ) — hamburger nav + stacked flagship ============ */
+/* ============ MOBILE ( ≤760px ) - hamburger nav + stacked flagship ============ */
 @media (max-width:760px){
-  /* difference blend can misbehave behind the menu overlay; drop it on mobile (all sections are dark anyway) */
-  .site-head{mix-blend-mode:normal;gap:1rem}
+  /* difference blend can misbehave behind the menu overlay; drop it on mobile and give the bar a
+     solid frosted backing so page content can't bleed through and collide with the brand/menu icon */
+  .site-head{mix-blend-mode:normal;gap:1rem;background:rgba(7,7,7,.82);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 
   /* show hamburger, turn nav-panel into a full-screen overlay */
   .nav-toggle{display:inline-flex}
@@ -359,17 +359,9 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
   .sec-head{flex-wrap:wrap;gap:.75rem 1.25rem}
   .sec-note{margin-left:0;flex-basis:100%}
 
-  /* flagship: stack the 5 panels vertically, no fixed-height clipping */
-  .htrack{flex-direction:column}
-  .panel{flex:0 0 auto;min-height:auto;max-height:none;overflow:visible;
-    justify-content:flex-start;border-right:none;border-bottom:1px solid var(--line);
-    padding:clamp(3.5rem,9vh,5rem) var(--pad)}
-  .panel:last-child{border-bottom:none}
-  .panel h3{max-width:none}
-  .panel .bg-num{font-size:clamp(5rem,26vw,11rem);right:1rem;opacity:.7}
-  .hprog{display:none}
+  /* flagship keeps the original horizontal pinned scroll on every width */
 
-  /* layers list: name on top, description full-width beneath */
+  /* layers list: name on top, description full-width beneath - readable inside the panel */
   .layers li{grid-template-columns:auto 1fr;gap:.4rem 1rem;align-items:baseline}
   .layers .l-desc{grid-column:1 / -1}
 
@@ -404,7 +396,7 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
     <nav class="site-nav" aria-label="Primary">
       <a href="#about"><span class="nv">01 </span>About</a>
       <a href="#journey"><span class="nv">02 </span>Journey</a>
-      <a href="#attribyte"><span class="nv">03 </span>Attribyte</a>
+      <a href="#engram"><span class="nv">03 </span>Engram</a>
       <a href="#recognition"><span class="nv">04 </span>Recognition</a>
       <a href="#contact"><span class="nv">05 </span>Contact</a>
     </nav>
@@ -422,16 +414,16 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
     <canvas id="mesh" aria-hidden="true"></canvas>
     <div class="hero-grid">
       <div>
-        <p class="kicker mono" data-hero-fade>Product Manager — AI · Platform · Consumer</p>
+        <p class="kicker mono" data-hero-fade>Product Manager · AI · Platform · Consumer</p>
         <h1>
           <span class="ln"><span class="ln-in">Shubham</span></span>
           <span class="ln"><span class="ln-in hollow">Suvarna</span></span>
           <span class="ln"><span class="ln-in ln-sm">Builds 0<span style="color:var(--accent)">→</span>1</span></span>
         </h1>
-        <p class="lede" data-hero-fade>Product builder at the intersection of technology, business, and AI —
+        <p class="lede" data-hero-fade>Product builder at the intersection of technology, business, and AI,
           from rapid MVPs to platforms enabling <strong>$30M/yr</strong> in cost savings.</p>
         <div class="cta-row" data-hero-fade>
-          <a class="btn btn-solid" href="#attribyte" data-cursor="View">See the flagship <span class="ar">↓</span></a>
+          <a class="btn btn-solid" href="#engram" data-cursor="View">See the flagship <span class="ar">↓</span></a>
           <a class="btn" href="mailto:shubham9@stanford.edu" data-cursor="Email">Email me <span class="ar">→</span></a>
         </div>
       </div>
@@ -439,7 +431,7 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
         <div class="dossier-head mono"><span>Dossier / 2026</span><span class="dot"></span></div>
         <div class="drow mono"><dt>Range</dt><dd>Idea → MVP → Launch → Scale</dd></div>
         <div class="drow mono"><dt>Domains</dt><dd>Travel · Fintech · Food-tech · eCom</dd></div>
-        <div class="drow mono"><dt>Now</dt><dd><a href="https://attribyte.vercel.app/" target="_blank" rel="noopener" data-cursor="Open">Attribyte — Live ↗</a></dd></div>
+        <div class="drow mono"><dt>Now</dt><dd>Building Engram</dd></div>
         <div class="drow mono"><dt>School</dt><dd>Stanford MS&amp;E '26–'28</dd></div>
         <div class="drow mono"><dt>Goal</dt><dd>Global, high-impact products</dd></div>
       </dl>
@@ -455,7 +447,7 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
           <span class="sec-num">01</span>
           <h2 id="about-h">About</h2>
         </div>
-        <p class="statement" data-reveal>I work where <em>technology, business, and AI</em> intersect —
+        <p class="statement" data-reveal>I work where <em>technology, business, and AI</em> intersect,
           turning ambiguity into shipped, scalable systems.</p>
       </div>
     </div>
@@ -475,7 +467,7 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
           <div class="mstep"><span class="ms-num mono">A</span><h4>Frame the system</h4>
             <p>Who uses it, how data flows, what constrains it. Validate the problem through behavior, step-level data, and competitors.</p></div>
           <div class="mstep"><span class="ms-num mono">B</span><h4>Scope the MVP</h4>
-            <p>Must do, must not do, tech required. Rank by impact × difficulty — and decide loudly what not to build.</p></div>
+            <p>Must do, must not do, tech required. Rank by impact × difficulty, and decide loudly what not to build.</p></div>
           <div class="mstep"><span class="ms-num mono">C</span><h4>Build with engineers</h4>
             <p>Sketch data layouts, API constraints, and edge cases early. Translate business needs into buildable plans; document trade-offs.</p></div>
           <div class="mstep"><span class="ms-num mono">D</span><h4>Ship as experiment</h4>
@@ -526,7 +518,7 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
         <span class="xp-tag">Travel</span>
       </div>
       <div class="xp-body">
-        <p>Joined at a true zero state — intuition-driven decisions, unstructured execution. Introduced data-backed
+        <p>Joined at a true zero state: intuition-driven decisions, unstructured execution. Introduced data-backed
           prioritization from competitor monetization and user-behavior insights, aligned stakeholders on a focused
           roadmap, and installed standups and tracking. Moved the team from reactive shipping to intentional building.</p>
         <div class="xp-metric"><span class="num">0→1</span><span class="lbl">Product process, from scratch</span></div>
@@ -536,7 +528,7 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
     <article class="xp-card">
       <div class="xp-top">
         <span class="xp-idx">/02</span>
-        <h3 class="xp-org">Fynd<span class="xp-role">Product & Program — Catalogue Cloud</span></h3>
+        <h3 class="xp-org">Fynd<span class="xp-role">Product & Program · Catalogue Cloud</span></h3>
         <span class="xp-tag">Enterprise</span>
       </div>
       <div class="xp-body">
@@ -564,12 +556,12 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
     <article class="xp-card">
       <div class="xp-top">
         <span class="xp-idx">/04</span>
-        <h3 class="xp-org">Roti Gali<span class="xp-role">Founding Team — Product & Technology</span></h3>
+        <h3 class="xp-org">Roti Gali<span class="xp-role">Founding Team · Product & Technology</span></h3>
         <span class="xp-tag">Food-tech</span>
       </div>
       <div class="xp-body">
         <p>Where the journey began: fair income for underpaid women home chefs, real food for hostel students. Built
-          the org from the ground up — Shopify integration, order workflows, ops processes, early growth experiments —
+          the org from the ground up: Shopify integration, order workflows, ops processes, and early growth experiments,
           leading a cross-functional team across dev, marketing, and operations.</p>
         <div class="xp-metric"><span class="num">Day 1</span><span class="lbl">Founding team, full stack of hats</span></div>
       </div>
@@ -579,84 +571,83 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
   <!-- ================= MARQUEE ================= -->
   <div class="marquee" aria-hidden="true">
     <div class="mq-in" id="mq">
-      <span>One catalog<span class="acc"> — </span>Every channel<span class="acc"> — </span>Always current<span class="acc"> ///</span></span><span>Flagship build<span class="acc"> — </span>Attribyte<span class="acc"> ///</span></span>
+      <span>Organizational memory<span class="acc"> · </span>made executable<span class="acc"> · </span>the company brain for agents<span class="acc"> ///</span></span><span>Flagship build<span class="acc"> · </span>Engram<span class="acc"> ///</span></span>
     </div>
   </div>
 
-  <!-- ================= 03 ATTRIBYTE ================= -->
-  <section id="attribyte" aria-labelledby="attribyte-h">
+  <!-- ================= 03 ENGRAM ================= -->
+  <section id="engram" aria-labelledby="engram-h">
     <div class="hwrap" id="hwrap">
       <div class="htrack" id="htrack">
 
         <article class="panel panel-title">
           <span class="bg-num" aria-hidden="true">03</span>
-          <p class="live-pill" data-p><span class="dot"></span>Flagship — Live product</p>
-          <h3 id="attribyte-h" data-p>Attri<span class="acc">byte</span></h3>
-          <p class="p-body" data-p><strong>One catalog. Every channel. Always current.</strong><br>
-            The catalog backbone for D2C brands selling on more than one channel — built, shipped, and reshaped
-            solo as founder-PM.</p>
-          <div class="cta-row" data-p>
-            <a class="btn btn-solid" href="https://attribyte.vercel.app/" target="_blank" rel="noopener" data-cursor="Open">Open live app <span class="ar">↗</span></a>
-          </div>
+          <p class="live-pill" data-p><span class="dot"></span>Flagship · Working MVP · pre-seed</p>
+          <h3 id="engram-h" data-p>En<span class="acc">gram</span></h3>
+          <p class="p-body" data-p><strong>The company brain for AI agents.</strong><br>
+            Organizational memory, made executable: the decision graph, skill engine, and agent runtime,
+            built and shipped solo as founder.</p>
           <p class="p-foot mono" data-p>Scroll to read the story →</p>
         </article>
 
         <article class="panel">
           <span class="bg-num" aria-hidden="true">A</span>
-          <p class="p-kicker mono" data-p>Chapter A — The problem</p>
-          <h3 data-p>Catalog drift is a <span class="acc">daily tax</span></h3>
-          <p class="p-body" data-p>D2C brands stopped being single-channel. Prices fall out of sync, attributes
-            disagree, inventory lies — every day, across Shopify, Amazon, Faire, and TikTok Shop. The only
-            alternative: enterprise PIM at <strong>$50k–$500k a year</strong> and 6-month deploys.</p>
+          <p class="p-kicker mono" data-p>Chapter A · The problem</p>
+          <h3 data-p>Companies run on <span class="acc">decisions</span>, not documents</h3>
+          <p class="p-body" data-p>Most decisions are undocumented, living in senior people's heads and buried Slack
+            threads, and they walk out the door the day someone leaves. Your AI agents inherit the model's
+            intelligence but <strong>none of your company's</strong>. The #1 blocker on every agent pilot:
+            <strong>“it doesn't know how we do things.”</strong></p>
           <div class="p-stats">
-            <div class="p-stat"><span class="num"><span data-count="2.7" data-dec="1">0</span></span><span class="lbl">Median channels per D2C brand — up from 1.2 in 2021</span></div>
-            <div class="p-stat"><span class="num"><span data-count="34">0</span>%</span><span class="lbl">YoY growth of multi-channel brands vs 9% Shopify-only</span></div>
+            <div class="p-stat"><span class="num"><span data-count="3">0</span></span><span class="lbl">Curves just crossed: agents shipped · extraction got cheap · search-era KM exposed</span></div>
+            <div class="p-stat"><span class="num">#1</span><span class="lbl">Blocker stalling AI-agent pilots: missing company context</span></div>
           </div>
         </article>
 
         <article class="panel">
           <span class="bg-num" aria-hidden="true">B</span>
-          <p class="p-kicker mono" data-p>Chapter B — The reshape</p>
-          <h3 data-p>I killed my own <span class="acc">roadmap</span></h3>
-          <p class="p-body" data-p>v1.2 framed Attribyte as an AI onboarding tool that pushes to Shopify. I ran the
-            frame through <strong>twelve falsification tests</strong> — it failed all of them. A feature, not a company.
-            So v1.3 reshaped it into the synchronization layer: onboarding is the first 30 minutes of a customer's
-            life; <strong>the next two years are the sync</strong>.</p>
-          <div class="p-stats">
-            <div class="p-stat"><span class="num"><span data-count="12">0</span></span><span class="lbl">Falsification tests run against the original frame</span></div>
-            <div class="p-stat"><span class="num">≤<span data-count="14">0</span>d</span><span class="lbl">Activation redefined: second channel connected within 14 days</span></div>
-          </div>
+          <p class="p-kicker mono" data-p>Chapter B · The solution</p>
+          <h3 data-p>From messy prose to <span class="acc">runnable skills</span></h3>
+          <p class="p-body" data-p>Engram learns how your company actually makes decisions and compiles that
+            knowledge into skills your agents run safely, with a human in the loop.</p>
+          <ul class="layers" data-p>
+            <li><span class="l-num">01</span><span class="l-name">Ingest</span>
+              <span class="l-desc">Slack, tickets, docs, runbooks → typed knowledge.</span></li>
+            <li><span class="l-num">02</span><span class="l-name">Decide</span>
+              <span class="l-desc">Decisions, exceptions &amp; rules → first-class objects.</span></li>
+            <li><span class="l-num">03</span><span class="l-name">Compile</span>
+              <span class="l-desc">The graph compiles into executable, scored skills.</span></li>
+            <li><span class="l-num">04</span><span class="l-name">Act</span>
+              <span class="l-desc">Agents run the skills, autonomous where it's safe.</span></li>
+          </ul>
+          <p class="p-foot mono" data-p>Runnable MVP today · FastAPI · Next.js · Neo4j / Postgres</p>
         </article>
 
         <article class="panel">
           <span class="bg-num" aria-hidden="true">C</span>
-          <p class="p-kicker mono" data-p>Chapter C — The product</p>
-          <h3 data-p>Three layers, <span class="acc">one schema</span></h3>
-          <ul class="layers" data-p>
-            <li><span class="l-num">L1</span><span class="l-name">Ingestion</span>
-              <span class="l-desc">Drop CSV / XLSX / JSON / PDF. AI maps supplier columns to the canonical schema in minutes — with memory, so no column is mapped twice.</span></li>
-            <li><span class="l-num">L2</span><span class="l-name">Synchronization</span>
-              <span class="l-desc">Direct-write connectors — Shopify, Amazon SP-API, Faire, TikTok Shop, headless webhooks. Rate-limit-aware, idempotent, bi-directional.</span></li>
-            <li><span class="l-num">L3</span><span class="l-name">Governance</span>
-              <span class="l-desc">Continuous drift detection, one-click fixes, audit log, restore-to-last-good. The reason the product opens daily, not quarterly.</span></li>
-          </ul>
-          <p class="p-foot mono" data-p>Stack: Next.js · TypeScript · Supabase · Claude · Vercel</p>
+          <p class="p-kicker mono" data-p>Chapter C · The moat</p>
+          <h3 data-p>Everyone retrieves. <span class="acc">We execute</span></h3>
+          <p class="p-body" data-p>Search shows the policy. Engram compiles the <strong>decision</strong> into a
+            deterministic, provenance-linked workflow an agent can run, with inputs, steps, and guardrails included.
+            Then a <strong>learning loop</strong> turns every human override into a sharper brain that compounds per
+            customer, and never transfers to a competitor.</p>
+          <div class="p-stats">
+            <div class="p-stat"><span class="num"><span data-count="0.81" data-dec="2">0</span></span><span class="lbl">Live confidence score on the demo's refund skill, pausing for a human under guard</span></div>
+            <div class="p-stat"><span class="num">∞</span><span class="lbl">A learning loop that compounds with use and never transfers to a competitor</span></div>
+          </div>
         </article>
 
         <article class="panel">
           <span class="bg-num" aria-hidden="true">D</span>
-          <p class="p-kicker mono" data-p>Chapter D — The outcome</p>
-          <h3 data-p>Pricing now follows <span class="acc">value</span></h3>
-          <p class="p-body" data-p>Pricing moved from SKU count to <strong>connected channels × SKUs</strong> — every
-            new channel is a natural upgrade event. ACV roughly quadruples; the north star becomes
-            <strong>active brands with 2+ connected channels</strong>.</p>
+          <p class="p-kicker mono" data-p>Chapter D · The opportunity</p>
+          <h3 data-p>Priced by <span class="acc">automation depth</span></h3>
+          <p class="p-body" data-p>Land one function (mid-market support / CX ops), then expand across IT, RevOps, HR,
+            and engineering runbooks. Pricing rises with auto-run depth, so <strong>every new function is a built-in
+            upgrade event</strong>.</p>
           <div class="p-stats">
-            <div class="p-stat"><span class="num">$<span data-count="44">0</span>M</span><span class="lbl">Reachable ARR at the high end — ~4× the prior frame</span></div>
-            <div class="p-stat"><span class="num"><span data-count="30">0</span>min</span><span class="lbl">Target time-to-first-export for a new user</span></div>
-            <div class="p-stat"><span class="num"><span data-count="98">0</span>%</span><span class="lbl">Target push success rate per channel</span></div>
-          </div>
-          <div class="cta-row" data-p style="margin-top:2.5rem">
-            <a class="btn" href="https://attribyte.vercel.app/" target="_blank" rel="noopener" data-cursor="Open">attribyte.vercel.app <span class="ar">↗</span></a>
+            <div class="p-stat"><span class="num">$<span data-count="163">0</span>M+</span><span class="lbl">Reachable ARR over 5 years: $58M–$163M+</span></div>
+            <div class="p-stat"><span class="num"><span data-count="120">0</span>%+</span><span class="lbl">Net revenue retention target, with expansion built in</span></div>
+            <div class="p-stat"><span class="num"><span data-count="4">0</span></span><span class="lbl">Tiers: Starter free → Team $600 → Business $2,500 → Enterprise custom</span></div>
           </div>
         </article>
 
@@ -664,7 +655,7 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
       <div class="hprog" aria-hidden="true">
         <span class="count" id="hcount">1 / 5</span>
         <span class="track"><span class="fill" id="hfill"></span></span>
-        <span class="count">Attribyte — PRD v1.3</span>
+        <span class="count">Engram · Seed pitch 2026</span>
       </div>
     </div>
   </section>
@@ -680,12 +671,12 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
       <div class="rec-col" data-reveal>
         <h3>Research & Academic</h3>
         <ul>
-          <li>Stanford University — MS, Management Science &amp; Engineering<span class="sub">Graduate student · Sept 2026 – June 2028</span></li>
-          <li>University of Mumbai — BE, Computer Science<span class="sub">Aug 2019 – May 2023</span></li>
-          <li>Published & presented at ICARTSEM '23 — international conference<span class="sub">Paper accepted in a peer-reviewed journal</span></li>
-          <li>Academic Achiever Award — two consecutive years</li>
+          <li>Stanford University · MS, Management Science &amp; Engineering<span class="sub">Graduate student · Sept 2026 – June 2028</span></li>
+          <li>University of Mumbai · BE, Computer Science<span class="sub">Aug 2019 – May 2023</span></li>
+          <li>Published & presented at ICARTSEM '23 · international conference<span class="sub">Paper accepted in a peer-reviewed journal</span></li>
+          <li>Academic Achiever Award · two consecutive years</li>
           <li>JEE batch topper · 50% merit engineering scholarship</li>
-          <li>CV system detecting errors in scanned form documents<span class="sub">Python · OpenCV · NumPy — +30% validation accuracy (2022–23)</span></li>
+          <li>CV system detecting errors in scanned form documents<span class="sub">Python · OpenCV · NumPy · +30% validation accuracy (2022–23)</span></li>
         </ul>
       </div>
       <div class="rec-col" data-reveal>
@@ -710,13 +701,13 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
 
   <!-- ================= 05 CONTACT ================= -->
   <section class="sec" id="contact" aria-labelledby="contact-h2">
-    <p class="contact-kicker mono" data-reveal>05 — Contact · Open to product roles</p>
+    <p class="contact-kicker mono" data-reveal>05 · Contact · Open to product roles</p>
     <h2 class="contact-h" id="contact-h2">
       <span class="ln"><span class="ln-in" data-cline>Let's build</span></span>
       <span class="ln"><span class="ln-in hollow" data-cline>something</span></span>
       <span class="ln"><span class="ln-in" data-cline>that <span style="color:var(--accent)">ships</span></span></span>
     </h2>
-    <p class="contact-sub" data-reveal>No forms. No skill bars. One inbox — replies fast.</p>
+    <p class="contact-sub" data-reveal>No forms. No skill bars. One inbox, replies fast.</p>
     <div class="contact-actions" data-reveal>
       <button class="btn btn-solid" id="copyBtn" data-cursor="Copy" type="button">
         <span id="copyLabel">shubham9@stanford.edu</span>
@@ -729,16 +720,12 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
         <span class="cl-name">LinkedIn</span><span class="cl-meta">/shubham-suvarna</span><span class="ar">↗</span></a>
       <a class="cl" href="https://github.com/Shubham3091" target="_blank" rel="noopener" data-cursor="Visit">
         <span class="cl-name">GitHub</span><span class="cl-meta">/Shubham3091</span><span class="ar">↗</span></a>
-      <a class="cl" href="https://attribyte.vercel.app/" target="_blank" rel="noopener" data-cursor="Open">
-        <span class="cl-name">Attribyte</span><span class="cl-meta">Live product</span><span class="ar">↗</span></a>
     </nav>
   </section>
 </main>
 
 <footer>
   <span class="mono">© 2026 Shubham Suvarna</span>
-  <span class="mono">Designed & built in pitch black</span>
-  <span class="mono">Archivo Black · Space Grotesk · JetBrains Mono</span>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -770,7 +757,7 @@ var mesh = (function(){
   }
   function seed(){
     pts = [];
-    /* fewer particles on phones / touch devices — lighter on battery & paint */
+    /* fewer particles on phones / touch devices - lighter on battery & paint */
     var cap = (smallScreen || !finePointer) ? 48 : 110;
     var n = Math.min(cap, Math.floor(W * H / 16000));
     for (var i = 0; i < n; i++){
@@ -840,7 +827,7 @@ var mesh = (function(){
   };
 })();
 
-/* field toggle — explicit 300ms state transitions in CSS */
+/* field toggle - explicit 300ms state transitions in CSS */
 var ftBtn = document.getElementById("fieldToggle");
 ftBtn.addEventListener("click", function(){
   mesh.running = !mesh.running;
@@ -926,7 +913,7 @@ function bindCounters(scope, containerAnim){
 /* ============ ANIMATIONS ============ */
 if (hasGSAP && !reduced){
 
-  /* hero — reveal from bottom, sequential stagger */
+  /* hero - reveal from bottom, sequential stagger */
   var intro = gsap.timeline({defaults:{ease:"power4.out"}});
   intro.from(".hero .ln-in", {yPercent:115, duration:1.15, stagger:.13}, .25)
        .from("[data-hero-fade]", {y:28, autoAlpha:0, duration:.8, stagger:.12, ease:"power3.out"}, "-=.7")
@@ -939,11 +926,11 @@ if (hasGSAP && !reduced){
       scrollTrigger:{trigger:el, start:"top 86%", once:true}});
   });
 
-  /* about list — sequential slide-in */
+  /* about list - sequential slide-in */
   gsap.from(".about-list li", {x:-36, autoAlpha:0, duration:.7, ease:"power3.out", stagger:.09,
     scrollTrigger:{trigger:".about-list", start:"top 80%", once:true}});
 
-  /* journey cards — slide in & expand sequentially */
+  /* journey cards - slide in & expand sequentially */
   gsap.utils.toArray(".xp-card").forEach(function(card, i){
     var tl = gsap.timeline({scrollTrigger:{trigger:card, start:"top 80%", once:true}});
     tl.fromTo(card,
@@ -953,65 +940,53 @@ if (hasGSAP && !reduced){
         {y:26, autoAlpha:0, duration:.55, stagger:.07, ease:"power3.out"}, "-=.35");
   });
 
-  /* ============ FLAGSHIP GALLERY ============ */
+  /* ============ FLAGSHIP GALLERY - horizontal pinned scroll on every width ============ */
   var panels = gsap.utils.toArray(".panel");
+  var track = document.getElementById("htrack");
+  var fill = document.getElementById("hfill");
+  var count = document.getElementById("hcount");
+  var n = panels.length;
 
-  if (!smallScreen){
-    /* desktop / tablet: pinned horizontal scroll */
-    var track = document.getElementById("htrack");
-    var fill = document.getElementById("hfill");
-    var count = document.getElementById("hcount");
-    var n = panels.length;
+  var hscroll = gsap.to(track, {
+    xPercent: -100 * (n - 1),
+    ease: "none",
+    scrollTrigger: {
+      trigger: "#engram",
+      pin: true,
+      scrub: 1,
+      anticipatePin: 1,
+      end: function(){ return "+=" + (track.scrollWidth - window.innerWidth); },
+      snap: {
+        snapTo: 1 / (n - 1),
+        duration: {min:.25, max:.65},
+        delay: .05,
+        ease: "power1.inOut"
+      },
+      onUpdate: function(self){
+        fill.style.transform = "scaleX(" + self.progress + ")";
+        count.textContent = (Math.round(self.progress * (n - 1)) + 1) + " / " + n;
+      },
+      invalidateOnRefresh: true
+    }
+  });
 
-    var hscroll = gsap.to(track, {
-      xPercent: -100 * (n - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#attribyte",
-        pin: true,
-        scrub: 1,
-        anticipatePin: 1,
-        end: function(){ return "+=" + (track.scrollWidth - window.innerWidth); },
-        snap: {
-          snapTo: 1 / (n - 1),
-          duration: {min:.25, max:.65},
-          delay: .05,
-          ease: "power1.inOut"
-        },
-        onUpdate: function(self){
-          fill.style.transform = "scaleX(" + self.progress + ")";
-          count.textContent = (Math.round(self.progress * (n - 1)) + 1) + " / " + n;
-        },
-        invalidateOnRefresh: true
-      }
-    });
-
-    /* per-panel story reveals, driven by the horizontal container */
-    panels.forEach(function(panel, idx){
-      var items = panel.querySelectorAll("[data-p]");
-      if (idx === 0){
-        gsap.from(items, {y:42, autoAlpha:0, duration:.8, stagger:.09, ease:"power3.out",
-          scrollTrigger:{trigger:"#attribyte", start:"top 70%", once:true}});
-      } else {
-        gsap.from(items, {x:90, autoAlpha:0, duration:.8, stagger:.08, ease:"power3.out",
-          scrollTrigger:{trigger:panel, containerAnimation:hscroll, start:"left 72%", once:true}});
-      }
-      bindCounters(panel, idx === 0 ? null : hscroll);
-    });
-  } else {
-    /* mobile: panels are stacked vertically — simple vertical reveals, no pin */
-    panels.forEach(function(panel){
-      var items = panel.querySelectorAll("[data-p]");
-      gsap.from(items, {y:34, autoAlpha:0, duration:.7, stagger:.08, ease:"power3.out",
-        scrollTrigger:{trigger:panel, start:"top 84%", once:true}});
-      bindCounters(panel, null);
-    });
-  }
+  /* per-panel story reveals, driven by the horizontal container */
+  panels.forEach(function(panel, idx){
+    var items = panel.querySelectorAll("[data-p]");
+    if (idx === 0){
+      gsap.from(items, {y:42, autoAlpha:0, duration:.8, stagger:.09, ease:"power3.out",
+        scrollTrigger:{trigger:"#engram", start:"top 70%", once:true}});
+    } else {
+      gsap.from(items, {x:90, autoAlpha:0, duration:.8, stagger:.08, ease:"power3.out",
+        scrollTrigger:{trigger:panel, containerAnimation:hscroll, start:"left 72%", once:true}});
+    }
+    bindCounters(panel, idx === 0 ? null : hscroll);
+  });
 
   /* counters outside the gallery */
   bindCounters(document.getElementById("journey"), null);
 
-  /* contact headline — reveal from bottom */
+  /* contact headline - reveal from bottom */
   gsap.from("[data-cline]", {yPercent:115, duration:1.05, stagger:.12, ease:"power4.out",
     scrollTrigger:{trigger:"#contact", start:"top 70%", once:true}});
 
@@ -1021,7 +996,7 @@ if (hasGSAP && !reduced){
   bindCounters(document, null);
 }
 
-/* ============ COPY EMAIL — explicit hover/active/loading states ============ */
+/* ============ COPY EMAIL - explicit hover/active/loading states ============ */
 var copyBtn = document.getElementById("copyBtn");
 var copyLabel = document.getElementById("copyLabel");
 var EMAIL = "shubham9@stanford.edu";
@@ -1036,7 +1011,7 @@ copyBtn.addEventListener("click", function(){
   function finish(ok){
     copyBtn.classList.remove("is-loading");
     copyBtn.classList.add("is-done");
-    copyLabel.textContent = ok ? "Copied ✓ — " + EMAIL : "Couldn't copy — tap “Open mail”";
+    copyLabel.textContent = ok ? "Copied ✓ " + EMAIL : "Couldn't copy. Tap “Open mail”";
     setTimeout(function(){
       copyBtn.classList.remove("is-done");
       copyLabel.textContent = EMAIL;
