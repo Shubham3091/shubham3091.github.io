@@ -365,6 +365,11 @@ footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
   .sec-note{margin-left:0;flex-basis:100%}
 
   /* flagship keeps the original horizontal pinned scroll on every width */
+  /* hide the progress strip on mobile so it can't overlap panel content */
+  .hprog{display:none}
+  /* keep CTA buttons compact inside flagship panels so the panel doesn't overflow */
+  .panel .cta-row{gap:.6rem;margin-top:clamp(.8rem,2vh,1.3rem)}
+  .panel .cta-row .btn{flex:0 1 auto;padding:.6rem 1rem;font-size:.72rem}
 
   /* layers list: name on top, description full-width beneath - readable inside the panel */
   .layers li{grid-template-columns:auto 1fr;gap:.4rem 1rem;align-items:baseline}
